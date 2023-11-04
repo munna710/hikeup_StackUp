@@ -1,12 +1,16 @@
 
 import './App.css';
-import {BrowserRouter,Routes,route } from "react-router-dom"
+import {BrowserRouter,Routes,Route } from "react-router-dom"
+import Layout from './components/Layout';
+import Home from './pages/Home';
 function App() {
   return (<>
     <BrowserRouter>
-    <Routes></Routes>
+    <Routes>
+    <Route path ="/" element = {<Layout/>}></Route>
+    <Route index element={<Home/>} ></Route>
+    </Routes>
     </BrowserRouter>
-    <h1>munna</h1>
     </>
   );
 }
