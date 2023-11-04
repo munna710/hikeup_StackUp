@@ -3,7 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-/*:root {}*/
+:root {
+  --color-131921:#131921 ;
+  --font-jura: Jura;
+}
 
 body {
   font-family: 'Rubik', sans-serif;
@@ -11,4 +14,149 @@ body {
 a {
   text-decoration:none ;
   display: inline-block;
+}
+/*Header Part*/
+.header-top-strip{
+  background-color: var(--color-131921);
+  height: 25px;
+}
+.groupChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-darkcyan);
+  width: 1440px;
+  height: 942px;
+}
+.rectangleParent {
+  position: absolute;
+  margin: 0 !important;
+  top: 82px;
+  left: 0;
+  width: 1440px;
+  height: 8450px;
+  z-index: 0;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-gray-800);
+  font-family: var(--font-inter);
+}
+.div {
+  position: absolute;
+  top: 8418px;
+  left: 43px;
+  display: inline-block;
+  width: 288px;
+  height: 32px;
+}
+.cutAndNeedleLogo1 {
+  position: absolute;
+  top: 104.7px;
+  left: 277px;
+  width: 886px;
+  height: 733.7px;
+  object-fit: cover;
+}
+.accessories,
+.express,
+.girls,
+.newIn,
+.women {
+  position: absolute;
+  top: 16px;
+  left: 306px;
+  display: inline-block;
+  width: 288px;
+}
+.accessories,
+.express,
+.girls,
+.women {
+  left: 390px;
+  height: 75px;
+}
+.accessories,
+.girls,
+.women {
+  left: 489px;
+}
+.accessories,
+.women {
+  left: 562px;
+}
+.accessories {
+  left: 651px;
+}
+.accountIcon,
+.wishlistIcon {
+  position: absolute;
+  top: 0;
+  left: 1248px;
+  width: 58px;
+  height: 47px;
+  object-fit: cover;
+}
+.wishlistIcon {
+  top: 4px;
+  left: 1306px;
+  width: 43px;
+  height: 43px;
+}
+.search {
+  position: absolute;
+  top: 5px;
+  left: 46px;
+  display: inline-block;
+  width: 288px;
+  height: 75px;
+}
+.searchicIcon {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 40px;
+  height: 31px;
+  object-fit: cover;
+}
+.searchbar {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.67);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 443px;
+  height: 41px;
+  mix-blend-mode: normal;
+}
+.searchParent {
+  position: absolute;
+  top: 8px;
+  left: 801px;
+  width: 445px;
+  height: 80px;
+  font-size: 24px;
+}
+.phbagThinIcon {
+  position: absolute;
+  top: 0;
+  left: 1355px;
+  width: 46px;
+  height: 48px;
+  overflow: hidden;
+}
+.cutAndNeedle {
+  margin: 0;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  padding-right: 300px;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-jura);
+  color: #057d67;
+  display: inline-block;
+  width: 52px;
+  height: 82px;
 }
