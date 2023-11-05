@@ -1,3 +1,4 @@
+//about us page
 import React from 'react'
 
 const About = () => {
