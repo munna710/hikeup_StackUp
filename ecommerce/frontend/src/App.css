@@ -6,7 +6,7 @@
 :root {
   --color-131921:#131921 ;
   --font-jura: Jura;
-  --font-size-14xl: 23px;
+  --font-size-14xl: 33px;
   --color-darkslategray: #00493c;
 }
 
@@ -51,48 +51,13 @@ a {
   width: 288px;
   height: 32px;
 }
-.accessories,
-.express,
-.girls,
-.newIn,
-.women {
-  position: absolute;
-  top: 23px;
-  left: 602px;
-  display: inline-block;
-  width: 289px;
-  height: 29.1px;
-}
-.accessories,
-.express,
-.girls,
-.women {
-  left: 714px;
-  height: 90.8px;
-}
-.accessories,
-.girls,
-.women {
-  left: 938px;
-  height: 91px;
-}
-.accessories,
-.women {
-  top: 23.2px;
-  left: 985.5px;
-  display: none;
-  height: 90.8px;
-}
-.accessories {
-  top: 22.8px;
-  left: 1023.9px;
-  display: inline-block;
-}
+
 .cutAndNeedle {
-  margin: 0;
+  margin: 10;
   position: absolute;
-  top: 22.5px;
+  top: 30.5px;
   left: 0;
+  right:20px;
   font-size: var(--font-size-14xl);
   font-weight: 700;
   font-family: var(--font-jura);
@@ -100,4 +65,134 @@ a {
   display: inline-block;
   width: 522.9px;
   height: 99.3px;
+}
+.nav-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start; /* Align navigation links to the top */
+  padding-top:  0px;
+ 
+   /* Add padding as needed to create space between links and top */
+}
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-family: 'Your Desired Font', sans-serif; /* Specify the font you want to use */
+   /* Add a smooth transition for the color change */
+}
+
+.nav-link:hover {
+  color: #ff0000; /* Change color on hover */
+  text-decoration: underline;
+}
+.search-icon-container {
+  position: absolute;
+  top: 31px; /* Adjust the top position as needed */
+  left: 1320px; /* Adjust the right position as needed */
+  cursor: pointer;
+  z-index: 1; /* Ensure the search icon appears above other elements */
+}
+
+.search-icon-img {
+  color: #333; /* Set default color for the search icon */
+  width: 30px;
+  height: 30px;
+  transition: all color 0.3s ease; 
+}
+
+.search-icon-container:hover .search-icon-img {
+  color: #ff0000;
+  transform: translateX(5px); /* Change color of the search icon on hover */
+}
+.account-icon,
+.wishlist-icon,
+.bag-icon {
+  font-size: 28px; /* Set the font size to 30 pixels for all icons */
+  color: #333; /* Set the default color for the icons */
+  margin-right: auto;
+  transition: all 0.3s ease;
+    
+ 
+}
+.account-icon:hover,
+.wishlist-icon:hover,
+.bag-icon:hover {
+  color: #ff0000; /* Change color on hover */
+  transform: translateX(5px); /* Move icons 5 pixels to the right on hover */
+}
+.bag-icon{
+  margin-right: 10px;
+  display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    
+    position: absolute;
+    top: 8px;
+    left: 650px;
+    height: 30px;
+    width: 30px;
+
+}
+.navbar .nav-item .account-icon {
+   
+   display: flex;
+     justify-content: flex-end;
+     align-items: flex-start;
+     
+     position: absolute;
+     top: 6px;
+     left: 565px ;
+     height: 35px;
+     width: 35px;/* Increase right margin for account icon in the navigation bar */
+}
+
+.navbar .nav-item .wishlist-icon {
+  /* Custom positioning for the wishlist icon in the navigation bar */
+  margin-right: auto;
+  display: flex;
+     justify-content: flex-end;
+     align-items: flex-start;
+     
+     position: absolute;
+     top: 10px;
+     left: 610px;
+     height: 30px;
+     width: 30px; /* Push the wishlist icon to the right side of the navigation bar */
+}
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top:70px; /* Position the search bar below the search icon */
+  right: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1;
+}
+
+.search-bar input[type='text'] {
+  width: 200px; /* Set the width of the input field */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px; /* Add space between input field and additional content (if any) */
+}
+.women-link {
+  position: relative; /* Add this line */
+}
+.women-categories {
+  position: absolute; /* Add this line */
+  list-style-type: none;
+  padding: 0;
+  background-color: #ffffff; /* Add a background color to make the categories visible */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for a nice effect */
+}
+.accessories-categories {
+  position: absolute; /* Add this line */
+  list-style-type: none;
+  padding: 0;
+  background-color: #ffffff; /* Add a background color to make the categories visible */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for a nice effect */
 }
