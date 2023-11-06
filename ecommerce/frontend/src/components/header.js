@@ -17,33 +17,44 @@ const Header = () => {
                 Hotline: <a className='text-white' href='tel:+9845637321'>+9845637321</a>
               </p>
             </div>
+
           </div>
         </div>
-        <div className="landingPage">
-          <section className="rectangleParent" />
-          <img
-            className="cutAndNeedleLogo1"
-            alt="logo"
-            src="/cut-and-needle-logo-1@2x.png"
-          />
-          <header className='newInParent'>
-            <div className='newIn'>NEW IN</div>
-            <div className='express'>EXPRESS</div>
-            <div className='girls'>GIRLS</div>
-            <div className='women'>WOMEN</div>
-            <div className='accessories'>ACCESSORIES</div>
-            <img className='accountIcon' alt="" src="/account@2x.png" />
-            <img className='wishlistIcon' alt="" src="/wishlist@2x.png" />
-            <div className='searchParent'>
-              <div className='search'>Search</div>
-              <img className='searchicIcon' alt="" src="/searchic@2x.png" />
-              <div className='searchbar' />
-            </div>
-            <img className='phbagThinIcon' alt="" src="/phbagthin.svg" />
-            <h2 className='cutAndNeedle'>CUT_AND_NEEDLE</h2>
-          </header>
+        </header>
+        <div> <h2 className='cutAndNeedle'>CUT_AND_NEEDLE</h2></div>
+        <nav className='navbar'>
+        <div className='container-xxl'>
+          <ul className='nav'>
+            <li className='nav-item'>
+              <NavLink to='/newin' className='nav-link' activeClassName='active-link'>
+                New In
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink to='/express' className='nav-link' activeClassName='active-link'>
+                Express
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink to='/girls' className='nav-link' activeClassName='active-link'>
+                Girls
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink to='/women' className='nav-link' activeClassName='active-link'>
+                Women
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink to='/accessories' className='nav-link' activeClassName='active-link'>
+                Accessories
+              </NavLink>
+            </li>
+          </ul>
         </div>
-      </header>
+      </nav>
+      
+    
     </>
   );
 }
