@@ -6,6 +6,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Pdgirls from './pages/Pdgirls';
+import Login from './pages/Login';
+import Forgotpassword from './pages/Forgotpassword';
+import Signup from './pages/Signup';
 function App() {
   return (<>
     <BrowserRouter>
@@ -15,6 +18,9 @@ function App() {
           <Route path ="About" element={<About />} />
           <Route path ="Contact" element={<Contact />} />
           <Route path ="Pdgirls" element={<Pdgirls />} />
+          <Route path ="Login" element={<Login />} />
+          <Route path ="Forgotpassword" element={<Forgotpassword />} />
+          <Route path ="Signup" element={<Signup />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -93,7 +93,7 @@ const Header = () => {
                       )}
                     </li>
                     <li className='nav-item'>
-                      <NavLink to='/account' className='nav-link'>
+                      <NavLink to='/Login' className='nav-link'>
                         <BsPerson className='account-icon' /> {/* Use BsPerson for account icon */}
                       </NavLink>
                     </li>

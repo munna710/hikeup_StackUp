@@ -696,3 +696,61 @@ a {
 .developer {
   text-align: right;
 }
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #000000;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  width: 150px;
+  position: relative;
+  top: 10px;
+  left: 160px;
+}
+.button-signup:hover,
+.button:hover {
+  background-color: #7e7e7e;
+  color: rgb(255, 255, 255);
+}
+.button-signup{
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #000000;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  width: 150px;
+  position: relative;
+  top: 10px;
+  right: 150px;
+}
+.d-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  /* This will make the div take the full height of the viewport */
+}
+.login-card {
+  width: 400px; /* Adjust as needed */
+  height: 320px; /* Adjust as needed */
+  background-color: #f6f2f2; /* Change to the color you want */
+  border-radius: 15px; /* Adds rounded corners */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+
+}
+.hlo{
+  text-align: center;
+  color: #616161;
+}
+.pfo{
+  text-align: center;
+  color: #909090;
+}
