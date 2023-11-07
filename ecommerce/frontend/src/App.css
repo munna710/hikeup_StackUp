@@ -661,3 +661,38 @@ a {
   text-decoration: underline; /* Underline the paragraph */
 }
 
+.footer-strip {
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+.pff{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 24px;
+  color: #dedddd;
+}
+.cutAndNeedle7{
+  
+  font-size: var(--font-size-14xl);
+ 
+  font-family: var(--font-jura);
+  color: green;
+}
+.icon {
+  color: #e7e7e7; /* Change to the color you want */
+  transition: color 0.3s ease;
+}
+.icon:hover {
+  color: #a1a1a1; /* Change to the color you want on hover */
+}
+.pff a ,.about-us a{
+  color: #e4e4e4; /* Change to the color you want */
+  text-decoration: none; /* Removes the underline */
+}
+
+.pff a:hover {
+  color: #777; /* Change to the color you want on hover */
+}
+.developer {
+  text-align: right;
+}
