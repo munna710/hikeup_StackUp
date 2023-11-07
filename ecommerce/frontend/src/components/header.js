@@ -76,7 +76,7 @@ const Header = () => {
                         )}
                     </li>
                     <li className='nav-item'>
-                      <NavLink to='/girls' className='nav-link' activeClassName='active-link'>
+                      <NavLink to='/Pdgirls' className='nav-link' activeClassName='active-link'>
                         GIRLS
                       </NavLink>
                     </li>
