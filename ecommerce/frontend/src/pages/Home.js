@@ -1,14 +1,8 @@
 //Landing page
-import React, { useState , useEffect, useRef} from 'react';
+import React, { useState} from 'react';
 import { NavLink } from 'react-router-dom';
 const Home = () => {
   const [email, setEmail] = useState('');
-  const emailInputRef = useRef(null);
-
-  useEffect(() => {
-    // Set focus on the email input field when the component mounts
-    emailInputRef.current.focus();
-  }, []); // Empty dependency array ensures the effect runs only once after initial render
 
   const handleInputChange = (event) => {
     setEmail(event.target.value);
@@ -20,7 +14,6 @@ const Home = () => {
     console.log('Form submitted');
     // Handle form submission logic here
     setEmail('');
-    
   };
 
   return (
@@ -159,67 +152,130 @@ const Home = () => {
    
   </div>
 </section>
-<section class="seasonal-picks">
-  <h2>Seasonal Picks</h2>
+<section class="newsletter">
+      <h2>SUBSCRIBE TO OUR NEWSLETTER</h2>
+      <p>Stay updated with our latest collections, sales, and exclusive offers.</p>
+      <form onSubmit={handleSubmit}>
+        <input type="email" placeholder="Enter your email" value={email}
+          onChange={handleInputChange}  required />
+        <button type="submit">SUBSCRIBE</button>
+      </form>
+      </section>
+      
+      <section class="on-sale">
+  <h2 className='htd' >ON SALE</h2>
   <div class="product-grid">
     <div class="product">
-      <img src="\images\kidooo.jpg" alt="Product 1" />
-      <h3>Product 1</h3>
-      <p>$49.99</p>
+      <NavLink to="/product1">
+        <img className="g1" src="/images/girls/g1.png" alt="Product 1"/>
+      </NavLink>
+      <h3 className='p1h3'>Product</h3>
+      <p class="original-price">₹1600</p>
+      <p className='p1p1'>₹600</p>
     </div>
     <div class="product">
-      <img src="\images\kidooo.jpg" alt="Product 2" />
-      <h3>Product 2</h3>
-      <p>$59.99</p>
+      <NavLink to="/product2">
+        <img className= "g2" src="/images/girls/g2.png" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p2h3'>Product</h3>
+      <p class="original-price2">₹1600</p>
+      <p className='p1p2'> ₹600</p>
+      
+      
+    </div>
+    <div class="product">
+      <NavLink to="/product2">
+        <img className= "g3" src="/images/girls/g3.png" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p3h3'>Product</h3>
+      <p class="original-price3">₹1600</p>
+      <p className='p1p3'> ₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product8">
+        <img className= "g4" src="/images/girls/g7.png" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p4h3'>Product</h3>
+      <p class="original-price4">₹1600</p>
+      <p className='p1p4'> ₹600</p>
+    </div>
+   
+  </div>
+</section>
+<section class="best-sellers">
+  <h2 className='htd'>BEST SELLER</h2>
+  <div class="product-grid">
+    <div class="product">
+      <NavLink to="/product1">
+        <img className='g1' src="/images/women/casual/wc1.jpg" alt="Product 1"/>
+      </NavLink>
+      <h3 className='p1h3'>Product</h3>
+      <p className='p1p1'> ₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product2">
+        <img className='g2' src="/images/women/casual/wc2.jpg" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p2h3'>Product </h3>
+      <p className='p1p2'>₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product3">
+        <img className='g3' src="/images/women/casual/wc5.jpg" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p3h3'>Product</h3>
+      <p className='p1p3'>₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product5">
+        <img className='g4' src="/images/women/casual/wc9.jpg" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p4h3'>Product</h3>
+      <p className='p1p4'>₹600</p>
+    </div>
+   
+  </div>
+</section>
+
+<section class="seasonal-picks">
+  <h2 className='htd'>SEASONAL PICKS</h2>
+  <div class="product-grid">
+    <div class="product">
+      <NavLink to="/product1">
+        <img className='g1' src="\images\girls\g1.png" alt="Product"/>
+      </NavLink>
+      <h3 className='p1h3'>Product</h3>
+      <p className='p1p1'> ₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product2">
+        <img className='g2' src="\images\girls\g2.png" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p2h3'>Product </h3>
+      <p className='p1p2'>₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product3">
+        <img className='g3' src="\images\girls\g3.png" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p3h3'>Product</h3>
+      <p className='p1p3'>₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product4">
+        <img className='g4' src="\images\girls\g7.png" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p4h3'>Product</h3>
+      <p className='p1p4'>₹600</p>
     </div>
     
   </div>
 </section>
-<section class="best-sellers">
-  <h2>Best Sellers</h2>
-  <div class="product-grid">
-    <div class="product">
-      <img src="images\kidooo.jpg" alt="Product 1"/>
-      <h3>Product 1</h3>
-      <p>$49.99</p>
-    </div>
-    <div class="product">
-      <img src="images\kidooo.jpg" alt="Product 2"/>
-      <h3>Product 2</h3>
-      <p>$59.99</p>
-    </div>
-   
-  </div>
-</section>
-      <section class="newsletter">
-      <h2>Subscribe to Our Newsletter</h2>
-      <p>Stay updated with our latest collections, sales, and exclusive offers.</p>
-      <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Enter your email" value={email}
-          onChange={handleInputChange} ref={emailInputRef} required />
-        <button type="submit">Subscribe</button>
-      </form>
-      </section>
-      <section class="on-sale">
-  <h2>On Sale</h2>
-  <div class="product-grid">
-    <div class="product">
-      <img src="images\kidooo.jpg" alt="Product 1"/>
-      <h3>Product 1</h3>
-      <p class="original-price">$69.99</p>
-      <p class="sale-price">$49.99</p>
-    </div>
-    <div class="product">
-      <img src="images\kidooo.jpg" alt="Product 2"/>
-      <h3>Product 2</h3>
-      <p class="original-price">$79.99</p>
-      <p class="sale-price">$59.99</p>
-    </div>
-   
-  </div>
-</section>
+
+      
+     
       <section class="testimonials">
-  <h2 className='client'>OUR CLIENT SAYS</h2>
+  <h2 className='htss'>OUR CLIENT SAYS</h2>
   <div class="testimonial-grid">
     <div class="testimonial">
       <p>"I absolutely love the clothes from this collection! They're stylish and comfortable."</p>

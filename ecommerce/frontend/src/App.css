@@ -284,7 +284,7 @@ a {
 }
 .newsletter {
   padding: 20px;
-  background-color: #f8f8f8; /* Adjust as needed */
+  background-color: rgba(0, 0, 0, 0.46); /* Adjust as needed */
   text-align: center;
 }
 
@@ -293,32 +293,60 @@ a {
   justify-content: center;
   gap: 10px; /* Adjust as needed */
 }
-
+.newsletter h2 {
+  color: #fff; /* Change the heading color to white */
+}
 .newsletter input {
   padding: 10px;
   font-size: 16px; /* Adjust as needed */
+  width: 400px;
 }
 
 .newsletter button {
   padding: 10px 20px; /* Adjust as needed */
   font-size: 16px; /* Adjust as needed */
   cursor: pointer;
+  background-color: #000000; /* Change the button color to black */
+  color: #ffffff;
+}
+.newsletter button:hover {
+  background-color: rgb(244, 244, 150); /* Change the button color to white on hover */
+  color: #000; /* Change the text color to black on hover */
 }
 .testimonials {
   padding: 20px;
-  background-color: #f8f8f8; /* Adjust as needed */
+  background-color: rgba(0, 0, 0, 0.46); /* Adjust as needed */
+  height: 250px;
+}
+.testimonials .htss{
+  color: white;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
+  
 }
 
-.testimonial-grid {
+.testimonials .testimonial-grid {
   display: flex;
-  gap: 20px; /* Adjust as needed */
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.testimonial {
-  width: 200px; /* Adjust as needed */
-  text-align: center;
+.testimonials .testimonial {
+  width: 45%; /* Adjust as needed */
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; /* Default background color */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add a box shadow */
+  border-radius: 15px; /* Add rounded corners */
+  transition: all 0.3s ease; /* Add a transition */
+}
+
+.testimonials .testimonial:hover {
+  background-color: #e0e0e0; /* Change the background color on hover */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Increase the size of the box shadow on hover */
 }
 .client{
   text-align: center;
@@ -365,7 +393,8 @@ a {
 }
 .seasonal-picks {
   padding: 20px;
-  background-color: #f8f8f8; /* Adjust as needed */
+  background-color: rgb(221, 204, 173); /* Adjust as needed */
+  height: 550px;
 }
 
 .product-grid {
@@ -379,6 +408,11 @@ a {
   width: 200px; /* Adjust as needed */
   text-align: center;
  
+}
+.seasonal-picks .product img{
+  width: 290px; /* Adjust as needed */
+  height: 350px; /* Adjust as needed */
+  border: 2px solid #000;
 }
 
 .new-arrivals .product img {
@@ -399,7 +433,8 @@ a {
 
 .best-sellers {
   padding: 20px;
-  background-color: #f8f8f8; /* Adjust as needed */
+  background-color: #d5abab; /* Adjust as needed */
+  height: 550px;
 }
 
 .product-grid {
@@ -414,15 +449,26 @@ a {
   text-align: center;
 }
 
-.product img {
-  width: 100%;
-  height: auto;
+.best-sellers .product img {
+  width: 280px; /* Adjust as needed */
+  height: 360px; /* Adjust as needed */
+  border: 2px solid #000;
 }
 .on-sale {
   padding: 20px;
   background-color: #f8f8f8; /* Adjust as needed */
+  height: 550px;
 }
-
+.on-sale .product img {
+  position: relative;
+  top: 10px; /* Move the image 10px down */
+  right: 10px; 
+  width: 290px; /* Adjust as needed */
+  height: 350px; /* Adjust as needed */
+  border: 2px solid #000;
+  
+ 
+}
 .product-grid {
   display: flex;
   gap: 20px; /* Adjust as needed */
@@ -443,6 +489,36 @@ a {
 .original-price {
   text-decoration: line-through;
   color: #888; /* Adjust as needed */
+  position:relative;
+  top: 385px;
+  right: 15px;
+}
+.original-price2 {
+  text-decoration: line-through;
+  color: #888; /* Adjust as needed */
+  
+   /* Adjust as needed */
+  position:relative;
+  top: 385px;
+  left:80px;
+}
+.original-price3 {
+  text-decoration: line-through;
+  color: #888; /* Adjust as needed */
+  
+   /* Adjust as needed */
+  position:relative;
+  top: 385px;
+  left: 170px;
+}
+.original-price4 {
+  text-decoration: line-through;
+  color: #888; /* Adjust as needed */
+  
+   /* Adjust as needed */
+  position:relative;
+  top: 385px;
+  left: 260px;
 }
 
 .sale-price {
@@ -570,7 +646,10 @@ a {
   border: 2px solid #000;
 }
 .trending-now .product img:hover,
-.featured-products .product img:hover {
+.featured-products .product img:hover ,
+.on-sale .product img:hover,
+.best-sellers .product img:hover,
+.seasonal-picks .product img:hover {
   transform: scale(1.1); /* Zoom in the image */
 }
 
