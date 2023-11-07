@@ -1,6 +1,6 @@
 //Landing page
 import React, { useState , useEffect, useRef} from 'react';
-
+import { NavLink } from 'react-router-dom';
 const Home = () => {
   const [email, setEmail] = useState('');
   const emailInputRef = useRef(null);
@@ -68,18 +68,72 @@ const Home = () => {
         </div>
         </section>
       </div>
-      <section class="featured-products">
-  <h2>Featured Women's Fashion</h2>
+      <section class="trending-now">
+  <h2 className='htd'>Trending Now</h2>
   <div class="product-grid">
     <div class="product">
-      <img src="path-to-image1.jpg" alt="Product 1"/>
-      <h3>Product 1</h3>
-      <p>$49.99</p>
+      <NavLink to="/product1">
+        <img className='g1' src="\images\girls\g1.png" alt="Product"/>
+      </NavLink>
+      <h3 className='p1h3'>Product</h3>
+      <p className='p1p1'> ₹600</p>
     </div>
     <div class="product">
-      <img src="path-to-image2.jpg" alt="Product 2"/>
-      <h3>Product 2</h3>
-      <p>$59.99</p>
+      <NavLink to="/product2">
+        <img className='g2' src="\images\girls\g2.png" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p2h3'>Product </h3>
+      <p className='p1p2'>₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product3">
+        <img className='g3' src="\images\girls\g3.png" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p3h3'>Product</h3>
+      <p className='p1p3'>₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product4">
+        <img className='g4' src="\images\girls\g7.png" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p4h3'>Product</h3>
+      <p className='p1p4'>₹600</p>
+    </div>
+    
+
+  
+  </div>
+</section>
+      <section class="featured-products">
+  <h2  className='htd'>Featured Women's Fashion</h2>
+  <div class="product-grid">
+    <div class="product">
+      <NavLink to="/product1">
+        <img className='g1' src="/images/women/casual/wc1.jpg" alt="Product 1"/>
+      </NavLink>
+      <h3 className='p1h3'>Product</h3>
+      <p className='p1p1'> ₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product2">
+        <img className='g2' src="/images/women/casual/wc2.jpg" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p2h3'>Product </h3>
+      <p className='p1p2'>₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product3">
+        <img className='g3' src="/images/women/casual/wc5.jpg" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p3h3'>Product</h3>
+      <p className='p1p3'>₹600</p>
+    </div>
+    <div class="product">
+      <NavLink to="/product5">
+        <img className='g4' src="/images/women/casual/wc9.jpg" alt="Product 2"/>
+      </NavLink>
+      <h3 className='p4h3'>Product</h3>
+      <p className='p1p4'>₹600</p>
     </div>
     
   </div>
@@ -91,11 +145,15 @@ const Home = () => {
   </div>
   <div class="product-grid">
     <div class="product">
-      <img src="\images\nw.jpg" alt="Product 1" />
+      <NavLink to="/product6">
+        <img className="n1" src="\images\nw.jpg" alt="Product 1" />
+      </NavLink>
       
     </div>
     <div class="product">
-      <img src="\images\kidooo.jpg" alt="Product 2" />
+      <NavLink to="/product7">
+        <img className="n1" src="\images\kidooo.jpg" alt="Product 2" />
+      </NavLink>
       
     </div>
    
@@ -174,22 +232,7 @@ const Home = () => {
     
       </div>
     </section>
-    <section class="trending-now">
-  <h2>Trending Now</h2>
-  <div class="product-grid">
-    <div class="product">
-      <img src="path-to-image1.jpg" alt="Product 1"/>
-      <h3>Product 1</h3>
-      <p>$49.99</p>
-    </div>
-    <div class="product">
-      <img src="path-to-image2.jpg" alt="Product 2"/>
-      <h3>Product 2</h3>
-      <p>$59.99</p>
-    </div>
-  
-  </div>
-</section>
+    
   
 
     </>
