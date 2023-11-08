@@ -784,16 +784,16 @@ a {
   left: 29px;
   top: 240px;
   width: 700px;
-  height: 1000px;
+  height: 850px;
 }
 
 .bg-pd{
-  height: 9000px;
+  height: 1010px;
 }
 .g55h3{
   position: absolute;
   left: 29px;
-  top: 1250px;
+  top: 1100px;
   width: 288px;
   height: 32px;
   color: rgba(0, 0, 0, 0.70);
@@ -809,7 +809,7 @@ a {
   height: 32px;
   position: absolute;
   left: 29px;
-  top: 1280px;
+  top: 1130px;
   color: rgba(0, 0, 0, 0.70);
   font-family: Inter;
   font-size: 20px;
@@ -921,4 +921,210 @@ a {
 .rc-slider-handle-dragging.rc-slider-handle-dragging {
   border-color: #000000;
   box-shadow: 0 0 0 5px rgba(38, 56, 76, 0.1);
+}
+.g-product2{
+  width: 400px;
+  height: 700px;
+  position: absolute;
+  right: 380px;
+  top: 68px;
+}
+.g4h3{
+  width: 288px;
+  height: 32px;
+  position: absolute;
+  right: 490px;
+  top: 620px;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.g4-price{
+  width: 288px;
+  height: 32px;
+  position: absolute;
+  right: 490px;
+  top: 650px;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.wishlist-icon2{
+  position: absolute;
+  top: 250px; /* Adjust as needed */
+  right: 400px;
+  transition: transform 0.3s
+}
+.wishlist-icon2:hover {
+  transform: scale(1.5); /* Makes the icon 20% larger when hovered over */
+}
+.g-product3{
+  width: 350px;
+  height: 370px;
+  position: absolute;
+  right: 22px;
+  top: 240px;
+
+}
+.wishlist-icon3{
+  position: absolute;
+  top: 250px; /* Adjust as needed */
+  left: 1460px;
+  transition: transform 0.3s
+}
+.wishlist-icon3:hover {
+  transform: scale(1.5); /* Makes the icon 20% larger when hovered over */
+}
+.g1-label{
+  width: 288px;
+  height: 32px;
+  right: 80px;
+  top: 620px;
+  position: absolute;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.g1-price{
+  width: 288px;
+  height: 32px;
+  right: 80px;
+  top: 650px;
+  position: absolute;
+  bottom: 0px;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+.g-product4{
+  width: 390px;
+  height: 390px;
+  position: absolute;
+  right: 390px;
+  top: 700px;
+
+}
+.wishlist-icon4{
+  position: absolute;
+  top: 710px; /* Adjust as needed */
+  left: 1100px;
+  transition: transform 0.3s
+}
+.wishlist-icon4:hover {
+  transform: scale(1.5); /* Makes the icon 20% larger when hovered over */
+}
+.g2-label{
+  width: 288px;
+  height: 32px;
+  right: 490px;
+  top: 1110px;
+  position: absolute;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.g2-price{
+  width: 288px;
+  height: 32px;
+  right: 490px;
+  top: 1140px;
+  position: absolute;
+  bottom: 0px;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+.g-product5{
+  width: 360px;
+  height: 390px;
+  position: absolute;
+  right: 20px;
+  top: 700px;
+}
+.wishlist-icon5{
+  position: absolute;
+  top: 710px; /* Adjust as needed */
+  left: 1470px;
+  transition: transform 0.3s
+}
+.wishlist-icon5:hover {
+  transform: scale(1.5); /* Makes the icon 20% larger when hovered over */
+}
+.g7-label{
+  width: 288px;
+  height: 32px;
+  right: 90px;
+  top: 1110px;
+  position: absolute;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.g7-price{
+  width: 288px;
+  height: 32px;
+  right: 90px;
+  top: 1140px;
+  position: absolute;
+  bottom: 0px;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+.contact-inner-wrapper{
+  padding: 30px 20px;
+  border-radius: 15px;
+  background-color: rgb(195, 195, 195);
+  gap: 10px;
+}
+.contact-inner-wrapper > div{
+  width: 48;
+}
+.contact-title{
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 35px;
+  text-align: left;
+  
+}
+.contact-description{
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 35px;
+  position: absolute;
+  right: 400px;
+  top: 610px;
+  color: #373737;
+  
+}
+.custom-input {
+  width: 700px;
+  height: 50px; /* Or any other value */
 }

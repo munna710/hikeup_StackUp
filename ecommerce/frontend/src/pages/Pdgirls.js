@@ -5,7 +5,11 @@ import { FaHeart } from 'react-icons/fa';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 const Pdgirls = () => {
-  const [heartColor, setHeartColor] = useState('black');
+  const [heartColor1, setHeartColor1] = useState('black');
+  const [heartColor2, setHeartColor2] = useState('black');
+  const [heartColor3, setHeartColor3] = useState('black');
+  const [heartColor4, setHeartColor4] = useState('black');
+  const [heartColor5, setHeartColor5] = useState('black');
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [minPrice, setMinPrice] = useState(600);
   const [maxPrice, setMaxPrice] = useState(4600);
@@ -158,10 +162,54 @@ const Pdgirls = () => {
     </NavLink>
     <FaHeart
   className='wishlist-icon1'
-  style={{ color: heartColor,stroke: 'black' }}
-  onClick={() => setHeartColor(heartColor === 'black' ? 'red' : 'black')}/>
+  style={{ color: heartColor1,stroke: 'black' }}
+  onClick={() => setHeartColor1(heartColor1 === 'black' ? 'red' : 'black')}/>
     <h3 className='g55h3'>Blue net frock</h3>
     <p className='g55p'>₹600</p>
+    </div>
+    <div className="parent-div">
+    <NavLink to="/some-path">
+    <img className='g-product2' src="\images\girls\g4.png" alt="description" />
+    </NavLink>
+    <FaHeart
+  className='wishlist-icon2'
+  style={{ color: heartColor2,stroke: 'black' }}
+  onClick={() => setHeartColor2(heartColor2 === 'black' ? 'red' : 'black')}/>
+    <h3 className='g4h3'>Wine net frock</h3>
+    <p className='g4-price'>₹600</p>
+    </div>
+    <div className="parent-div">
+    <NavLink to="/some-path">
+    <img className='g-product3' src="\images\girls\g1.png" alt="description" />
+    </NavLink>
+    <FaHeart
+  className='wishlist-icon3'
+  style={{ color: heartColor3,stroke: 'black' }}
+  onClick={() => setHeartColor3(heartColor3 === 'black' ? 'red' : 'black')}/>
+    <h3 className='g1-label'>Tutu dress</h3>
+    <p className='g1-price'>₹600</p>
+    </div>
+    <div className="parent-div">
+    <NavLink to="/some-path">
+    <img className='g-product4' src="\images\girls\g2.png" alt="description" />
+    </NavLink>
+    <FaHeart
+  className='wishlist-icon4'
+  style={{ color: heartColor4,stroke: 'black' }}
+  onClick={() => setHeartColor4(heartColor4 === 'black' ? 'red' : 'black')}/>
+    <h3 className='g2-label'>Tutu dress</h3>
+    <p className='g2-price'>₹600</p>
+    </div>
+    <div className="parent-div">
+    <NavLink to="/some-path">
+    <img className='g-product5' src="\images\girls\g3.png" alt="description" />
+    </NavLink>
+    <FaHeart
+  className='wishlist-icon5'
+  style={{ color: heartColor4,stroke: 'black' }}
+  onClick={() => setHeartColor5(heartColor5 === 'black' ? 'red' : 'black')}/>
+    <h3 className='g7-label'>Tutu dress</h3>
+    <p className='g7-price'>₹600</p>
     </div>
     
   </section></div>
