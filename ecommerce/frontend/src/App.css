@@ -754,3 +754,79 @@ a {
   text-align: center;
   color: #909090;
 }
+.text-wrapper{
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+
+}
+.text-wrapper h1{
+  animation: move-rtl 6000ms linear infinite;
+  color: rgba(0, 0, 0, 0.66);
+  font-family: ISOCPEUR;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@keyframes move-rtl{
+  0%{
+    transform: translate(0);
+  }
+  100%{
+    transform: translate(-100%);
+  }
+
+}
+.g55{
+  position: absolute;
+  left: 29px;
+  top: 240px;
+  width: 700px;
+  height: 1000px;
+}
+.g55:hover {
+  
+}
+.bg-pd{
+  height: 9000px;
+}
+.g55h3{
+  position: absolute;
+  left: 29px;
+  top: 1250px;
+  width: 288px;
+  height: 32px;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+.g55p{
+  width: 288px;
+  height: 32px;
+  position: absolute;
+  left: 29px;
+  top: 1280px;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+.wishlist-icon1{
+  position: absolute;
+  top: 250px; /* Adjust as needed */
+  right: 800px;
+  transition: transform 0.3s
+}
+.wishlist-icon1:hover {
+  transform: scale(1.5); /* Makes the icon 20% larger when hovered over */
+}
