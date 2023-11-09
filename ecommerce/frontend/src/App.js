@@ -9,6 +9,7 @@ import Pdgirls from './pages/Pdgirls';
 import Login from './pages/Login';
 import Forgotpassword from './pages/Forgotpassword';
 import Signup from './pages/Signup';
+import Singlepd from './pages/Singlepd';
 function App() {
   return (<>
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
           <Route path ="Login" element={<Login />} />
           <Route path ="Forgotpassword" element={<Forgotpassword />} />
           <Route path ="Signup" element={<Signup />} />
+          <Route path ="Singlepd" element={<Singlepd />} />
         </Route>
       </Routes>
     </BrowserRouter>

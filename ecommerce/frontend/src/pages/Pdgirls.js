@@ -156,7 +156,7 @@ const Pdgirls = () => {
 </div>
     <div><section className='bg-pd'>
       <div className="parent-div">
-    <NavLink to="/some-path">
+    <NavLink to="/Singlepd">
     <img className='g55' src="\images\g55.png" alt="description" />
     </NavLink>
     <FaHeart

@@ -1183,3 +1183,9 @@ a {
   margin-bottom: 10px;
   font-family: 'Courier New', Courier, monospace;
 }
+
+.rating{
+  position: relative;
+  top: 400px;
+  
+}
