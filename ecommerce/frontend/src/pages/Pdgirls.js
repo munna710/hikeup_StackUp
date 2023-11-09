@@ -2,8 +2,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+
 const Pdgirls = () => {
   const [heartColor1, setHeartColor1] = useState('black');
   const [heartColor2, setHeartColor2] = useState('black');

@@ -1,6 +1,9 @@
 //contact us page
-import React from 'react'
-
+import React from 'react';
+import {AiOutlineHome} from 'react-icons/ai';
+import {BiPhoneCall} from 'react-icons/bi';
+import {AiOutlineMail} from 'react-icons/ai';
+import {AiOutlineInfoCircle} from 'react-icons/ai';
 const Contact = () => {
   return (
     <>
@@ -44,6 +47,26 @@ const Contact = () => {
       </div>
       <div > 
       <h3 className='contact-description' >Get in touch with us</h3>
+      <div>
+        <ul className='ps-0 no-bullets'>
+        <li className='mb-4 custom-li'>
+        <div className='icon-content'>
+      <AiOutlineHome className='fs-5' />
+      <span className='text-content'>ABC INDIA</span>
+      </div>
+        </li>
+          <li className='mb-4 '><BiPhoneCall className='fs-5'/>
+          <a className='text-content' href='tel:123456789'>+123456789</a></li>
+          <li className='mb-4 '>
+            <AiOutlineMail className='fs-5'/>
+            <a className='text-content' href='mailto:abc@gmail.com'>abc@gmail.com</a>
+          </li>
+          <li className='mb-4 '>
+            <AiOutlineInfoCircle className='fs-5'/>
+            <p className='text-content1'>Monday - Friday 10 AM - 8 PM</p>
+            </li>
+        </ul>
+      </div>
       </div>
       </div>
       </div>

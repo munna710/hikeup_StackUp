@@ -1101,7 +1101,7 @@ a {
 .contact-inner-wrapper{
   padding: 30px 20px;
   border-radius: 15px;
-  background-color: rgb(195, 195, 195);
+  background-color: rgb(222, 222, 222);
   gap: 10px;
 }
 .contact-inner-wrapper > div{
@@ -1127,4 +1127,30 @@ a {
 .custom-input {
   width: 700px;
   height: 50px; /* Or any other value */
+}
+
+.no-bullets {
+  list-style-type: none;
+}
+
+
+
+.fs-5 {
+  position: relative;
+  right: 450px;
+  top: 0px;
+ margin-left: 0px;
+
+
+}
+.text-content {
+  position: relative;
+  right: 440px;
+  top: 4px;
+}
+.text-content1 {
+  position: absolute;
+  right: 355px;
+  top: 865px;
+  
 }
