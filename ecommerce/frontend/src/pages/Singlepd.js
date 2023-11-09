@@ -3,17 +3,27 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
-
+import products from './Products.json';
 function Singlepd() {
     const ratingChanged = (newRating) => {
         console.log(newRating);
       };
+      const product = products.find(product => product.name === 'Blue net frock');
   return (
     <div className='main-product-wrapper py-5 home-wrapper-2'>
         <div className='container-xxl'>
         <div className='row'>
         <div className='col6'>
         <div className='col6'>
+        <div className="product-grid">
+                <div>
+                  <NavLink to={{ pathname: '/product-detail', state: { product } }}>
+                    <img src={product.image} alt={product.name} />
+                    <h2>{product.name}</h2>
+                    <p>{product.price}</p>
+                  </NavLink>
+                </div>
+              </div>
         <section class="trending-now">
   <h2 className='htd'>Trending Now</h2>
   <div class="product-grid">
@@ -40,7 +50,7 @@ function Singlepd() {
       </NavLink>
       <h3 className='p2h3'>Product </h3>
       <p className='p1p2'>₹600</p>
-      <div className='rating'>
+      <div className='rating2'>
     <ReactStars
       count={5}
       onChange={ratingChanged}
@@ -57,7 +67,7 @@ function Singlepd() {
       </NavLink>
       <h3 className='p3h3'>Product</h3>
       <p className='p1p3'>₹600</p>
-      <div className='rating'>
+      <div className='rating3'>
     <ReactStars
       count={5}
       onChange={ratingChanged}
@@ -74,7 +84,7 @@ function Singlepd() {
       </NavLink>
       <h3 className='p4h3'>Product</h3>
       <p className='p1p4'>₹600</p>
-      <div className='rating'>
+      <div className='rating4'>
     <ReactStars
       count={5}
       onChange={ratingChanged}

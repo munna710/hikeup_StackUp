@@ -1186,6 +1186,24 @@ a {
 
 .rating{
   position: relative;
-  top: 400px;
+  top: 380px;
+  
+}
+.rating2{
+  position: relative;
+  top: 380px;
+  left: 100px;
+  
+}
+.rating3{
+  position: relative;
+  top: 380px;
+  left: 190px;
+  
+}
+.rating4{
+  position: relative;
+  top: 380px;
+  left: 280px;
   
 }
