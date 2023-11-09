@@ -1154,3 +1154,32 @@ a {
   top: 865px;
   
 }
+
+.about {
+  padding: 20px;
+}
+
+.about h1 {
+  color: #333;
+  font-size: 44px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.about p {
+  color: #666;
+  font-size: 28px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.about h2 {
+  color: #333;
+  font-size: 32px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.about li {
+  color: #666;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
