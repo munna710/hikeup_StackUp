@@ -4,6 +4,8 @@ const {
   getaProduct,
   getAllProduct,
   updateProduct,
+  addToWishlist,
+  rating,
   deleteProduct}
     = require("../controller/productCtrl");
 const router = express.Router();
@@ -14,4 +16,6 @@ router.get("/:id",   getaProduct);
 router.get("/", getAllProduct);
 router.put("/:id", authMiddleware, isAdmin, updateProduct);
 router.delete("/:id", authMiddleware, isAdmin, deleteProduct);
+router.put("/wishlist", authMiddleware, addToWishlist);
+router.put("/rating", authMiddleware, rating);
 module.exports = router;
