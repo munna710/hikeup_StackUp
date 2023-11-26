@@ -16,6 +16,7 @@ const subcategoryRouter = require('./routes/subcategoryRouter');
 const couponRouter = require("./routes/couponRoute");
 const uploadRouter = require("./routes/uploadRoute");
 const colorRouter = require("./routes/colorRoute");
+const enqRouter = require("./routes/enqRoute");
 
 dbConnect();
 
@@ -33,6 +34,7 @@ app.use("/api/subcategory", subcategoryRouter);
 app.use("/api/coupon", couponRouter);
 app.use("/api/upload", uploadRouter);
 app.use("/api/color", colorRouter);
+app.use("/api/enquiry", enqRouter);
 app.use(notFound);
 app.use(errorHandler);
 

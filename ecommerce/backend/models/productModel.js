@@ -23,10 +23,16 @@ var productSchema = new mongoose.Schema(
       required: true,
     },
     category: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'PCategory',
       required: true,
     },
-    
+    subcategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Subcategory',
+      required: true,
+    },
+
     quantity: {
       type: Number,
       required: true,
@@ -41,6 +47,10 @@ var productSchema = new mongoose.Schema(
         url: String,
       },
     ],
+    sizes:[{
+      name:{type:String},
+      quantity:{type:Number}
+    }],
     color: [],
     tags: String,
     ratings: [
