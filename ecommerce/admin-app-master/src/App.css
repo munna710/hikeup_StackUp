@@ -27,6 +27,9 @@
   border: 2px solid white !important;
   transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
+
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
