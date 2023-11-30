@@ -246,8 +246,7 @@ const MainLayout = () => {
             draggable
             theme="light"
           />
-         content
-      
+          <Outlet />
         </Content>
     </Layout>
   </Layout>
