@@ -5,10 +5,10 @@ import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  deleteABlogCat,
+  deleteAProductCategory,
   getCategories,
   resetState,
-} from "../features/bcategory/bcategorySlice";
+} from "../features/pcategory/pcategorySlice";
 import CustomModal from "../components/CustomModal";
 
 const columns = [
@@ -28,12 +28,12 @@ const columns = [
   },
 ];
 
-const Blogcatlist = () => {
+const Categorylist = () => {
   const [open, setOpen] = useState(false);
-  const [blogCatId, setblogCatId] = useState("");
+  const [pCatId, setpCatId] = useState("");
   const showModal = (e) => {
     setOpen(true);
-    setblogCatId(e);
+    setpCatId(e);
   };
 
   const hideModal = () => {
@@ -44,24 +44,23 @@ const Blogcatlist = () => {
     dispatch(resetState());
     dispatch(getCategories());
   }, []);
-  const bCatState = useSelector((state) => state.bCategory.bCategories);
-  console.log(bCatState);
+  const pCatStat = useSelector((state) => state.pCategory.pCategories);
   const data1 = [];
-  for (let i = 0; i < bCatState.length; i++) {
+  for (let i = 0; i < pCatStat.length; i++) {
     data1.push({
       key: i + 1,
-      name: bCatState[i].title,
+      name: pCatStat[i].title,
       action: (
         <>
           <Link
-            to={`/admin/blog-category/${bCatState[i]._id}`}
+            to={`/admin/category/${pCatStat[i]._id}`}
             className=" fs-3 text-danger"
           >
             <BiEdit />
           </Link>
           <button
             className="ms-3 fs-3 text-danger bg-transparent border-0"
-            onClick={() => showModal(bCatState[i]._id)}
+            onClick={() => showModal(pCatStat[i]._id)}
           >
             <AiFillDelete />
           </button>
@@ -69,8 +68,8 @@ const Blogcatlist = () => {
       ),
     });
   }
-  const deleteBlogCategory = (e) => {
-    dispatch(deleteABlogCat(e));
+  const deleteCategory = (e) => {
+    dispatch(deleteAProductCategory(e));
     setOpen(false);
     setTimeout(() => {
       dispatch(getCategories());
@@ -78,7 +77,7 @@ const Blogcatlist = () => {
   };
   return (
     <div>
-      <h3 className="mb-4 title">Blog Categories</h3>
+      <h3 className="mb-4 title">Product Categories</h3>
       <div>
         <Table columns={columns} dataSource={data1} />
       </div>
@@ -86,12 +85,12 @@ const Blogcatlist = () => {
         hideModal={hideModal}
         open={open}
         performAction={() => {
-          deleteBlogCategory(blogCatId);
+          deleteCategory(pCatId);
         }}
-        title="Are you sure you want to delete this blog category?"
+        title="Are you sure you want to delete this Product Category?"
       />
     </div>
   );
 };
 
-export default Blogcatlist;
+export default Categorylist;
