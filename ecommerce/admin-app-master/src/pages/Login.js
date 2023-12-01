@@ -79,7 +79,7 @@ const Login = () => {
               Forgot Password?
             </Link>
           </div>
-          <Link to="/admin">
+          
             <button
               className="border-0 px-3 py-2 text-white fw-bold w-100 text-center text-decoration-none fs-5 mt-3  button"
               style={{ background: '#1AC2C4' }}
@@ -87,7 +87,7 @@ const Login = () => {
             >
               Login
             </button>
-          </Link>
+         
         </form>
       </div>
     </div>
