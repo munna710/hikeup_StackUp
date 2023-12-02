@@ -10,6 +10,8 @@ import colorReducer from "../features/color/colorSlice";
 import enquiryReducer from "../features/enquiry/enquirySlice";
 import uploadReducer from "../features/upload/uploadSlice";
 import couponReducer from "../features/coupon/couponSlice";
+import sizeReducer from "../features/size/sizeSlice";
+import subcategoryReducer from "../features/subcategory/subcategorySlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -22,5 +24,7 @@ export const store = configureStore({
     enquiry: enquiryReducer,
     upload: uploadReducer,
     coupon: couponReducer,
+    size: sizeReducer,
+    subcategory: subcategoryReducer
   },
 });

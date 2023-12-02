@@ -23,6 +23,10 @@ import Couponlist from "./pages/Couponlist";
 import AddCoupon from "./pages/AddCoupon";
 import ViewEnq from "./pages/ViewEnq";
 import ViewOrder from "./pages/ViewOrder";
+import SubcategoryList from "./pages/SubcategoryList";
+import SizeList from "./pages/SizeList";
+import AddSize from "./pages/AddSize";
+import AddSubcategory from "./pages/AddSubcategory";
 function App() {
   return (
     <Router>
@@ -40,6 +44,8 @@ function App() {
           <Route path="coupon-list" element={<Couponlist />} />
           <Route path="coupon" element={<AddCoupon />} />
           <Route path="coupon/:id" element={<AddCoupon />} />
+          <Route path="list-subcategories" element={<SubcategoryList />} />
+          <Route path="list-size" element={<SizeList />} />
           <Route path="blog-category-list" element={<Blogcatlist />} />
           <Route path="blog-category" element={<Addblogcat />} />
           <Route path="blog-category/:id" element={<Addblogcat />} />
@@ -54,6 +60,11 @@ function App() {
           <Route path="category/:id" element={<Addcat />} />
           <Route path="list-product" element={<Productlist />} />
           <Route path="product" element={<Addproduct />} />
+          <Route path="product/:id" element={<Addproduct />} />
+          <Route path="size" element={<AddSize />} />
+          <Route path="size/:id" element={<AddSize />} />
+          <Route path="subcategories" element={<AddSubcategory />} />
+          <Route path="subcategories/:id" element={<AddSubcategory />} />
         </Route>
       </Routes>
     </Router>
