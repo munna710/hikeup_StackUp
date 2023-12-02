@@ -14,11 +14,15 @@ const createSize = async (size) => {
   return response.data;
 };
 
-const updateSize = async (id, size) => {
-  const response = await axios.put(`${base_url}size/${id}`, size, config);
-
-  return response.data;
-};
+const updateSize = async (size) => {
+    const response = await axios.put(
+      `${base_url}size/${size.id}`,
+      { title: size.sizeData.title },
+      config
+    );
+  
+    return response.data;
+  };
 
 const getSize = async (id) => {
   const response = await axios.get(`${base_url}size/${id}`, config);
