@@ -1,139 +1,49 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, Search, User, LogIn, X, ShoppingCart } from 'react-feather';
-import Button from '@/components/Button';
-import Input from '@/components/Input';
-import UserDropDown from '@/components/UserDropDown';
-import useClickOutside from '@/hooks/useClickOutside';
+import React, { useState } from "react";
+import './Navbar.css';
+import { Link } from "react-router-dom";
 
-import { AuthContext } from '@/context/AuthContext';
-import { CartContext } from '@/context/CartContext';
-function Navbar() {
-  const { user, logout } = useContext(AuthContext);
-  const { cartItems } = useContext(CartContext);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isUserDropDownOpen, setIsUserDropDownOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const searchRef = useClickOutside(() => setIsSearchOpen(false));
-  const userDropDownRef = useClickOutside(() => setIsUserDropDownOpen(false));
-  const cartRef = useClickOutside(() => setIsCartOpen(false));
+const Navbar = () => {
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchTerm) {
-      // redirect to search page
-    }
-  }
-  return (
-    <header className="bg-white shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between py-4">
-          <div className="flex items-center">
-            <button
-              className="text-gray-500 focus:outline-none lg:hidden"
-              onClick={() => setIsMenuOpen(true)}
-            >
-              <Menu />
-            </button>
-            <Link to="/" className="text-gray-800 font-bold text-xl ml-2">
-              Ecommerce
-            </Link>
-          </div>
-          <div className="hidden lg:flex items-center">
-            <form
-              className="relative"
-              onSubmit={handleSearch}
-              ref={searchRef}
-            >
-              <button
-                type="submit"
-                className="absolute right-0 top-0 mt-3 mr-2"
-              >
-                <Search />
-              </button>
-              <Input
-                placeholder="Search"
-                className="pl-10"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onFocus={() => setIsSearchOpen(true)}
-              />
-              {isSearchOpen && (
-                <div className="absolute bg-white w-full mt-2 rounded-lg shadow-lg p-4">
-                  <p>Search Result</p>
-                </div>
-              )}
+      const [menu,setMenu] = useState("home")
+
+    return (
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-            <div className="ml-6">
-              {user ? (
-                <div className="relative" ref={userDropDownRef}>
-                  <button
-                    className="flex items-center focus:outline-none"
-                    onClick={() => setIsUserDropDownOpen(true)}
-                  >
-                    <User className="mr-2" /> {user.name}
-                  </button>
-                  {isUserDropDownOpen && (
-                    <UserDropDown
-                      setIsUserDropDownOpen={setIsUserDropDownOpen}
-                      logout={logout}
-                    />
-                  )}
-                </div>
-              ) : (
-                <Link
-                  to="/login"
-                  className="flex items-center focus:outline-none"
-                >
-                  <LogIn className="mr-2" /> Login
-                </Link>
-              )}
-            </div>
-            <div className="ml-6 relative" ref={cartRef}>
-              <button
-                className="flex items-center focus:outline-none"
-                onClick={() => setIsCartOpen(true)}
-              >
-                <ShoppingCart className="mr-2" /> Cart
-                {cartItems.length > 0
-                  ? <span className="ml-1 bg-red-500 text-white px-1 rounded-full text-xs">{cartItems.length}</span>
-                  : null
-                }
-              </button>
-              {isCartOpen && (
-                <div className="absolute bg-white w-64 mt-2 rounded-lg shadow-lg p-4">
-                  <p>Cart</p>
-                </div>
-              )}  
-            </div>
           </div>
-        </div>
       </div>
-      {isMenuOpen && (
-        <div className="lg:hidden bg-white shadow-sm">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between py-4">
-              <div className="flex items-center">
-                <Link to="/" className="text-gray-800 font-bold text-xl ml-2">
-                  Ecommerce
-                </Link>
-              </div>
-              <div className="flex items-center">
-                <button
-                  className="text-gray-500 focus:outline-none lg:hidden"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <X />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </header>
-  );
+    </nav>
+    )
 }
-export default Navbar;
 
+export default Navbar;
