@@ -5,7 +5,7 @@ import './Navbar.css';
 const Navbar = () => {
     return (
         <div className="container  ">
-            <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom fixed-top bg-light">
+            <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom fixed-top bg-light my-navbar">
                 <a className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" href="#">
                     <img src={logo} alt="Logo" width="60" height="50" className="bi me-2" />
                     <span style={{ fontSize: '28px' }}>CUT_AND_NEEDLE</span>
@@ -32,7 +32,7 @@ const Navbar = () => {
                 </form>
               
                 <div class="d-flex align-items-center justify-content-end col-md-3">
-                <a href="#" className="link-dark me-3">
+                <a href="#" className="link-dark me-3 bag-icon">
                 <BsBag size={32} />
                 </a>
                 <div className="text-end">

@@ -57,4 +57,11 @@
     opacity: 1;
     visibility: visible;
   }
-  
+  .my-navbar {
+    position: relative; /* or fixed, depending on your layout */
+    z-index: 2; /* any value higher than the z-index of your carousel */
+  }
+  .bag-icon:hover {
+    transform: scale(1.2); /* increase size on hover */
+    transition: transform 0.3s ease-in-out; /* animate the size change */
+  }
