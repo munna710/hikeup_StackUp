@@ -1,0 +1,73 @@
+
+  .most-loved-heading {
+    font-family: Georgia, serif;
+   
+  }
+
+  
+  
+  
+  #itemslider h4{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    margin: 10px auto 3px;
+  }
+  #itemslider h5{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 3px auto 2px;
+  }
+  #itemslider h6{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;;
+    font-size: 10px;
+    margin: 2px auto 5px;
+  }
+  .badge {
+    background: #b20c0c;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    line-height: 31px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    border: 2px solid #FFF;
+    box-shadow: 0 0 0 1px #b20c0c;
+    top: 5px;
+    right: 25%;
+  }
+
+
+  
+
+  .carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #000; /* Change to your desired color */
+  height: 50px; /* Change to your desired size */
+  width: 50px; /* Change to your desired size */
+}
+.carousel-image {
+    height: 400px;
+   /* default height for large screens */
+  }
+  
+  /* adjust height for medium screens */
+  @media (max-width: 768px) {
+    .carousel-image {
+      height: 500px;
+    }
+  }
+  
+  /* adjust height for small screens */
+  @media (max-width: 576px) {
+    .carousel-image {
+      height: 300px;
+    }
+  }
+  .carousel-image {
+    z-index: 1;
+  }
