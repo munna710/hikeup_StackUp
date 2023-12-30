@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './carousel.css'
 const Carousel = () => {
   return (
     <div id="carouselExampleIndicators" class="carousel slide">
