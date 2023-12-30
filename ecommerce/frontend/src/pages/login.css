@@ -1,0 +1,121 @@
+ftco-section {
+    padding: 7em 0;
+ }
+  
+  .ftco-no-pt {
+    padding-top: 0; }
+  
+  .ftco-no-pb {
+    padding-bottom: 0; }
+  
+  .heading-section {
+    font-size: 28px;
+    color: #000; }
+  
+  .img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; }
+  
+  .login-wrap {
+    position: relative;
+    background: #000232;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); }
+    .login-wrap h3 {
+      font-weight: 400;
+      font-size: 18px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px; }
+    .login-wrap p {
+      color: rgba(255, 255, 255, 0.5); }
+    .login-wrap .img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto;
+      margin-bottom: 20px; }
+  
+  .form-group10 {
+    position: relative; }
+    .form-group10 .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 20px;
+      height: 48px;
+      background: transparent;
+      font-size: 18px; }
+      .form-group10 .icon span {
+        color: #fff; }
+  
+  .frm {
+    height: 48px;
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 14px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #b689b0;
+    padding-left: 30px;
+    padding-right: 0;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; }
+    @media (prefers-reduced-motion: reduce) {
+      .frm {
+        -webkit-transition: none;
+        -o-transition: none;
+        transition: none; } }
+    .frm::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: rgba(255, 255, 255, 0.8) !important; }
+    .frm::-moz-placeholder {
+      /* Firefox 19+ */
+      color: rgba(255, 255, 255, 0.8) !important; }
+    .frm:-ms-input-placeholder {
+      /* IE 10+ */
+      color: rgba(255, 255, 255, 0.8) !important; }
+    .frm:-moz-placeholder {
+      /* Firefox 18- */
+      color: rgba(255, 255, 255, 0.8) !important; }
+    .frm:focus, .form-control:active {
+      outline: none !important;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      background: rgba(0, 0, 0, 0.07);
+      border-color: #b689b0; }
+  
+  .text a {
+    text-transform: uppercase; }
+  
+ 
+  
+        a {
+            -webkit-transition: .3s all ease;
+            -o-transition: .3s all ease;
+            transition: .3s all ease;
+            color: #b689b0;
+        }  
+        .form-group10 {
+            margin-bottom: 20px;
+        }
+        
+        .w-100.text-md-right {
+            margin-bottom: 20px;
+        }
+        
+        .btn.form-control.btn-primary.rounded.submit.px-3 {
+            margin-bottom: 20px;
+            background-color: #b689b0; /* Change this to your desired color */
+    
+        }
