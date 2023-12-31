@@ -1,4 +1,4 @@
-import React from 'react';
+
 import greendress from './geenw.jpeg';
 import whitedress from './whitew.jpeg';
 import bluedress from './bluew.jpeg';
