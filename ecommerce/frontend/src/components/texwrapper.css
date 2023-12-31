@@ -1,0 +1,24 @@
+.text-wrapper{
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+  
+  }
+  .text-wrapper h1{
+    animation: move-rtl 6000ms linear infinite;
+    color: rgba(0, 0, 0, 0.66);
+    font-family: ISOCPEUR;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  @keyframes move-rtl{
+    0%{
+      transform: translate(0);
+    }
+    100%{
+      transform: translate(-100%);
+    }
+  
+  }

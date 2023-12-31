@@ -10,6 +10,8 @@ import Login from './pages/Login';
 import Forgotpassword from './pages/Forgotpassword';
 import Signup from './pages/Signup';
 import Singlepd from './pages/Singlepd';
+import Women from './pages/women';
+
 function App() {
   return (<>
     <BrowserRouter>
@@ -23,6 +25,8 @@ function App() {
           <Route path ="Forgotpassword" element={<Forgotpassword />} />
           <Route path ="Signup" element={<Signup />} />
           <Route path ="Singlepd" element={<Singlepd />} />
+          <Route path=':category/*' element={<Women category='women'/>} />
+
         </Route>
       </Routes>
     </BrowserRouter>
