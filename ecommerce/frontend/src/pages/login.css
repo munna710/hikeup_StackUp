@@ -35,3 +35,7 @@
   padding: 2px 20px; /* Adjust this to match the padding of your input boxes */
   margin: 0px 0; /* Adjust this to add some space above the error message */
 }
+.forgot-password {
+  margin-left: 20px;
+  
+}

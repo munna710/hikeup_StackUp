@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import './login.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../features/user/userSlice';
 
 const signUpSchema = yup.object({
   firstname: yup.string().required('Required'),
@@ -13,6 +15,7 @@ const signUpSchema = yup.object({
 });
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -22,19 +25,20 @@ const Signup = () => {
       password: '',
     },
     validationSchema: signUpSchema,
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values, { resetForm }) => {
+      dispatch(registerUser (values));
+      resetForm();
     },
   });
   return (
     <>
     <div className="container bg-dark">
-    <div className='ogin-wrapper py-5 home wrapper -2 d-flex align-items-center justify-content-center'>
+    <div className='login-wrapper py-5 home wrapper -2 d-flex align-items-center justify-content-center'>
         <div className='row'>
             <div className='col-12'>
                 <div className='login-card'>
                     <h3 className='text-center'>Create Account</h3>
-                     <form action='' onSubmit={formik.handleSubmit} >
+                     <form onSubmit={formik.handleSubmit} >
                      <div>
                             <input 
                             type='text' 
@@ -100,16 +104,26 @@ const Signup = () => {
 
                         <div></div>
                         <div>
-                            <input type='password' id='password' placeholder='password' className='form-control'/>
+                        <input 
+                          type='password' 
+                          id='password' 
+                          placeholder='password' 
+                          className='form-control'
+                          value={formik.values.password}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur("password")}
+                          />
+                          {formik.touched.password && formik.errors.password ? (
+                            <div className='error'>{formik.errors.password}</div>
+                            ) : null}    
                         </div>
                         <div></div>
                         <div>
 
                         <div className='d-flex'> 
-                        <button type='submit' className='btn btn-outline-dark me-2'>CREATE</button> 
-
-                        <Link to='/Login' className='btn btn-outline-dark me-2'>CANCEL</Link>
-                        </div>
+                        <button type='submit' className='btn btn-outline-dark me-2 '>CREATE</button> 
+                          <Link to='/Login' className='btn btn-outline-dark me-2 '>CANCEL</Link>
+                          </div>
                         </div>
                      </form>
                 </div>

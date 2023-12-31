@@ -1,49 +1,85 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom';
-import './login.css'
+import { useFormik } from 'formik';
+import * as yup from 'yup'; 
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../features/user/userSlice';
 
-const Login = () => {
-  return (
-    <section className="ftco-section">
-      <div className="container-fluid">
-        <div className="row justify-content-center">
-          <div className="col-md-6 text-center mb-5">
-          </div>
-        </div>
-        <div className="row justify-content-center">
-          <div className="col-md-6 col-lg-4">
-            <div className="login-wrap py-5">
-              <div className="img d-flex align-items-center justify-content-center" style={{backgroundImage: "url(https://img.freepik.com/premium-photo/cute-asian-girl-kawaii-anime-avatar-ai-generative-art_225753-12246.jpg)"}}></div>
-              <h3 className="text-center mb-0">Welcome</h3>
-              <p className="text-center">Sign in by entering the information below</p>
-              <form action="#" className="login-form">
-                <div className="form-group10">
-                  <div className="icon d-flex align-items-center justify-content-center"><span className="fa fa-user"></span></div>
-                  <input type="text" className="form-control frm" placeholder="Email" required />
+import './login.css';
+
+const loginSchema = yup.object({
+  email: yup.string().email('Invalid email address').required('Required'),
+  password: yup.string().required('password is Required'),
+});
+
+const Login = () => { 
+  const dispatch = useDispatch();
+    const formik = useFormik({
+      initialValues: {
+        email: '',
+        password: '',
+      },
+      validationSchema: loginSchema,
+      onSubmit: (values) => {
+        dispatch(loginUser (values));
+
+      },
+    });
+
+      return (
+          <div className="container bg-dark">
+            <div className='login-wrapper py-5 home wrapper -2 d-flex align-items-center justify-content-center'>
+              <div className='row'>
+                  <div className='col-12'>
+                <div className='login-card'>
+                    <h3 className='text-center'>LOGIN</h3>
+                     <form onSubmit={formik.handleSubmit}>
+                        <div>
+                            <input type='email'
+                            id ='email' 
+                            placeholder='email' 
+                            className='form-control'
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur("email")}
+                              />
+                              {formik.touched.email && formik.errors.email ? (
+                            <div className='error'>{formik.errors.email}</div>
+                            ) : null}
+                            </div>
+                            
+                            <div>
+                              <input type='password' 
+                              id='password' 
+                              placeholder='password' 
+                              className='form-control'
+                              value={formik.values.password}
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur("password")}
+                              />
+                              {formik.touched.password && formik.errors.password ? (
+                            <div className='error'>{formik.errors.password}</div>
+                            ) : null}
+                            </div>
+                            
+                            <div className='forgot-password'>
+                            <Link to='/Forgotpassword'>Forgot Password?</Link>
+                            <div className='d-flex'> 
+                            <button type='submit' className='btn btn-outline-dark me-2'>LOGIN</button> 
+
+                            <Link to='/Signup' className='btn btn-outline-dark me-2'>SIGNUP</Link>
+                        </div>
+                        </div>
+                     </form>
                 </div>
-                <div className="form-group10">
-                  <div className="icon d-flex align-items-center justify-content-center"><span className="fa fa-lock"></span></div>
-                  <input type="password" className="form-control frm" placeholder="Password" required />
-                </div>
-                <div className="form-group d-md-flex">
-                  <div className="w-100 text-md-right">
-                    <Link to="/Forgotpassword">Forgot Password</Link>
-                  </div>
-                </div>
-                <div className="form-group10">
-                  <button type="submit" className="btn form-control btn-primary rounded submit px-3">Get Started</button>
-                </div>
-              </form>
-              <div className="w-100 text-center mt-4 text">
-                <p className="mb-0">Don't have an account?</p>
-                <Link to="/Signup">Sign Up</Link>
-              </div>
+
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
-export default Login;
+        </div>
+    </div>
+    </div>
+
+  )
+}
+
+export default Login
