@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import  {authService} from "./userService"
-export const registerUser=createAsyncThunk("auth/register",async(thunkAPI)=>{
+import  {authService} from "./userServices"
+export const registerUser=createAsyncThunk("auth/register",async(userData,thunkAPI)=>{
   try{
-
+    return await authService.register(userData)
   }catch(error){
+    return thunkAPI.rejectwithvalue(error)
 
   }
 })
@@ -34,3 +35,5 @@ export const authSlice= createSlice({
     }
 
  })
+
+export default authSlice.reducer;

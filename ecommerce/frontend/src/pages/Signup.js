@@ -1,54 +1,125 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import './login.css'
+import { Link } from 'react-router-dom'
+import './login.css';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
+const signUpSchema = yup.object({
+  firstname: yup.string().required('Required'),
+  lastname: yup.string().required('Required'),
+  mobile: yup.string().required('Required'),
+  email: yup.string().email('Invalid email address').required('Required'),
+  password: yup.string().min(8, 'Must be 8 characters or more').required('Required'),
+});
+
 const Signup = () => {
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      mobile: '',
+      password: '',
+    },
+    validationSchema: signUpSchema,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   return (
-    <section className="ftco-section">
-      <div className="container-fluid">
-        <div className="row justify-content-center">
-          <div className="col-md-6 text-center mb-5">
-          </div>
-        </div>
-        <div className="row justify-content-center">
-          <div className="col-md-6 col-lg-4">
-            <div className="login-wrap py-5">
-              <h3 className="text-center mb-0">Welcome</h3>
-              <p className="text-center">Sign up by entering the information below</p>
-              <form action="#" className="login-form">
-              <div className="form-group10">
-                  <div className="icon d-flex align-items-center justify-content-center"><span className="fa fa-user"></span></div>
-                  <input type="text" className="form-control frm" placeholder="Firstname" required />
+    <>
+    <div className="container bg-dark">
+    <div className='ogin-wrapper py-5 home wrapper -2 d-flex align-items-center justify-content-center'>
+        <div className='row'>
+            <div className='col-12'>
+                <div className='login-card'>
+                    <h3 className='text-center'>Create Account</h3>
+                     <form action='' onSubmit={formik.handleSubmit} >
+                     <div>
+                            <input 
+                            type='text' 
+                            id='firstname' 
+                            placeholder='First Name' 
+                            className='form-control'
+                            value={formik.values.firstname}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur('firstname')}
+
+                            />
+                            {formik.touched.firstname && formik.errors.firstname ? (
+                            <div className='error'>{formik.errors.firstname}</div>
+                            ) : null}
+                        </div>
+                        <div></div>
+                        <div>
+                            <input 
+                            type='text'
+                            id='lastname' 
+                            placeholder='Last Name' 
+                            className='form-control'
+                            value={formik.values.lastname}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur('lastname')}
+                            
+                            />
+                            {formik.touched.lastname && formik.errors.lastname ? (
+                            <div className='error'>{formik.errors.lastname}</div>
+                            ) : null}
+                      
+                        </div>
+                        <div></div>
+                        <div>
+                            <input 
+                            type='email'
+                            id='email' 
+                            placeholder='email' 
+                            className='form-control'
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur("email")}
+                            />
+                            {formik.touched.email && formik.errors.email ? (
+                            <div className='error'>{formik.errors.email}</div>
+                            ) : null}
+              
+                        </div>
+                        <div>
+                            <input 
+                            type='tel'
+                            id='mobile' 
+                            placeholder='mobile number' 
+                            className='form-control'
+                            value={formik.values.mobile}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur("mobile")}
+                            />
+                            {formik.touched.mobile && formik.errors.mobile ? (
+                            <div className='error'>{formik.errors.mobile}</div>
+                            ) : null}
+                        </div>
+
+                        <div></div>
+                        <div>
+                            <input type='password' id='password' placeholder='password' className='form-control'/>
+                        </div>
+                        <div></div>
+                        <div>
+
+                        <div className='d-flex'> 
+                        <button type='submit' className='btn btn-outline-dark me-2'>CREATE</button> 
+
+                        <Link to='/Login' className='btn btn-outline-dark me-2'>CANCEL</Link>
+                        </div>
+                        </div>
+                     </form>
                 </div>
-                <div className="form-group10">
-                  <div className="icon d-flex align-items-center justify-content-center"><span className="fa fa-user"></span></div>
-                  <input type="text" className="form-control frm" placeholder="Lastname" required />
-                </div>
-                <div className="form-group10">
-                  <div className="icon d-flex align-items-center justify-content-center"><span className="fa fa-user"></span></div>
-                  <input type="text" className="form-control frm" placeholder="Email" required />
-                </div>
-                <div className="form-group10">
-                  <div className="icon d-flex align-items-center justify-content-center"><span className="fa fa-lock"></span></div>
-                  <input type="password" className="form-control frm" placeholder="Password" required />
-                </div>
-                
-                <div className="form-group10">
-                  <button type="submit" className="btn form-control btn-primary rounded submit px-3">CREATE</button>
-                </div>
-                <div className="form-group10">
-                  <button type="submit" className="btn form-control btn-primary rounded submit px-3">CANCEL</button>
-                </div>
-              </form>
-              <div className="w-100 text-center mt-4 text">
-                <p className="mb-0">have an account?</p>
-                <Link to="/Login">Sign In</Link>
-              </div>
+
             </div>
-          </div>
+
         </div>
-      </div>
-    </section>
+    </div>
+    </div>
+    </>
   )
 }
-
-export default Signup
+export default Signup;
