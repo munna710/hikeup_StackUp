@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   return (
@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
               </ul>
             </div>
             <div className="product-content">
-              <h3 className="title"><a href="#">{product.name}</a></h3>
+              <h3 className="title"><Link to={`/product/${product.id}`}>{product.name}</Link></h3>
               <div class="price"><span>₹{product.price}</span> ₹{product.salePrice}</div>
             </div>
           </div>

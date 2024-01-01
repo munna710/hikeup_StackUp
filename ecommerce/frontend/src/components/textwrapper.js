@@ -16,6 +16,7 @@ const TextWrapper = ({ category }) => {
         <h1>{upperCaseCategory}&nbsp;&nbsp;</h1>
         <h1>{upperCaseCategory}&nbsp;&nbsp;</h1>
         <h1>{upperCaseCategory}&nbsp;&nbsp;</h1>
+        <h1>{upperCaseCategory}&nbsp;&nbsp;</h1>
       </div>
     </div>
   )

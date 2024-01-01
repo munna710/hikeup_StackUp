@@ -25,9 +25,10 @@ function App() {
           <Route path ="Login" element={<Login />} />
           <Route path ="Forgotpassword" element={<Forgotpassword />} />
           <Route path ="Signup" element={<Signup />} />
-          <Route path ="Singlepd" element={<Singlepd />} />
+          
           <Route path=':category/*' element={<Women category='women'/>} />
           <Route path ="Blog" element={<Blog />} />
+          <Route path=':product/:id' element={<Singlepd />} />
 
         </Route>
       </Routes>

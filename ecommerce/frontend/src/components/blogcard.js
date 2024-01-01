@@ -1,12 +1,13 @@
+// Blogcard.js
 import React from 'react';
 import './blogcard.css';
 
 const Blogcard = ({ blog }) => {
   return (
-    <div className='col-lg-3 col-md-4 col-sm-6'>
-      <div className='blog-card'> 
+    <div className='container'>
+      <div className='blog-card' style={{ width: '100%' }}>
         <div className='card-image'>
-          <img src={blog.image} alt='Blog Image' className='img-fluid' />
+          <img src={blog.image} alt='Blog Image' className='img-fluid w-100 blog-card-image' />
         </div>
         <div className='card-body'>
           <h5 className='card-title'>{blog.title}</h5>
@@ -15,7 +16,7 @@ const Blogcard = ({ blog }) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Blogcard;
