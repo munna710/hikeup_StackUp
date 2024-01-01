@@ -4,3 +4,31 @@
     border-radius: 10px;
     padding:10px 15px;
 }
+.mb-button {
+    margin-bottom: 20px;
+  }
+  /* filter.css */
+
+  div.input-range__slider {
+    background: #000000; /* Change to your desired color */
+    /* Change to your desired size */
+     /* Change to your desired size */
+    /* Adjust according to your size */
+  }
+  
+  div.input-range__track--active {
+    background: #000000; /* Change to your desired color */
+  }
+  
+  div.input-range__track--inactive {
+    background: #ccc; /* Change to your desired color */
+  }
+  
+  div.input-range__label--min,
+  div.input-range__label--max {
+    display: none; /* Hide the labels */
+  }
+  div.input-range {
+    width: 400px; /* Change to your desired length */
+  }
+ 
