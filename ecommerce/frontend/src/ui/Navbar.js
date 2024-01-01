@@ -12,8 +12,8 @@ const Navbar = () => {
                 </a>
                 <div >
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
-                <li className="nav-item"><a href="#" class="nav-link px-2 link-secondary hover-effect">HOME</a></li>
-                <li className="nav-item"><a href="#" class="nav-link px-2 link-dark hover-effect">WOMEN</a></li>
+                <li className="nav-item"><a href="/" class="nav-link px-2 link-secondary hover-effect">HOME</a></li>
+                <li className="nav-item"><a href="/women" class="nav-link px-2 link-dark hover-effect">WOMEN</a></li>
                 <li className="nav-item"><a href="#" class="nav-link px-2 link-dark hover-effect">GIRLS</a></li>
                 <li className="nav-item dropdown">
                 <a href="#" className="nav-link px-2 link-dark hover-effect dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">ACCESSORIES</a>
@@ -23,7 +23,7 @@ const Navbar = () => {
                 </ul>
 
                 </li>
-                <li><a href="#" class="nav-link px-2 link-dark hover-effect">BLOG</a></li>
+                <li><a href="/Blog" class="nav-link px-2 link-dark hover-effect">BLOG</a></li>
                 {/* <li><a href="#" class="nav-link px-2 link-dark  d-flex align-items-top"><BsBag size={25}/></a></li> */}
                 </ul>
                 </div >

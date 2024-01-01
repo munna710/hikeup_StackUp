@@ -1,115 +1,128 @@
-import React, { useEffect } from 'react';
-import $ from 'jquery';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel';
+import React from 'react';
 import './Testimonial.css';
 const Testimonial = () => {
-    useEffect(() => {
-        $('.owl-carousel').owlCarousel({
-            mouseDrag:false,
-            loop:true,
-            margin:2,
-            nav:true,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
-
-        $('.owl-prev').click(function() {
-            let active = $('.owl-item .item.show');
-            $('.owl-item .item.show').removeClass('show');
-            $('.owl-item .item').removeClass('next');
-            $('.owl-item .item').removeClass('prev');
-            active.addClass('next');
-            if(active.is('.first')) {
-                $('.owl-item .last').addClass('show');
-                $('.first').addClass('next');
-                $('.owl-item .last').parent().prev().children('.item').addClass('prev');
-            }
-            else {
-                active.parent().prev().children('.item').addClass('show');
-                if(active.parent().prev().children('.item').is('.first')) {
-                    $('.owl-item .last').addClass('prev');
-                }
-                else {
-                    $('.owl-item .show').parent().prev().children('.item').addClass('prev');
-                }
-            }
-        });
-
-        $('.owl-next').click(function() {
-            let active = $('.owl-item .item.show');
-            $('.owl-item .item.show').removeClass('show');
-            $('.owl-item .item').removeClass('next');
-            $('.owl-item .item').removeClass('prev');
-            active.addClass('prev');
-            if(active.is('.last')) {
-                $('.owl-item .first').addClass('show');
-                $('.owl-item .first').parent().next().children('.item').addClass('prev');
-            }
-            else {
-                active.parent().next().children('.item').addClass('show');
-                if(active.parent().next().children('.item').is('.last')) {
-                    $('.owl-item .first').addClass('next');
-                }
-                else {
-                    $('.owl-item .show').parent().next().children('.item').addClass('next');
-                }
-            }
-        });
-
-    }, []);
+  
 
     return (
-        <div className="container-fluid px-3 px-sm-5 my-5 text-center">
-            <h1 className="most-loved-heading">WHAT OUR CLIENT SAYS</h1>
-            <div className="owl-carousel owl-theme">
-            <div class="item first prev">
-            <div class="card border-0 py-3 px-4">
-                <div class="row justify-content-center">
-                    <img src="https://i.imgur.com/gazoShk.jpg" class="img-fluid profile-pic mb-4 mt-3"/>
+                    <section style={{color: '#000', backgroundColor: '#f3f2f2'}}>
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 col-xl-8 text-center">
+                    <h3 class="fw-bold mb-4">Testimonials</h3>
+                    <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+                        numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
+                        quisquam eum porro a pariatur veniam.
+                    </p>
                 </div>
-                <h6 class="mb-3 mt-2">Marielle Haag</h6>
-                <p class="content mb-5 mx-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim.</p>
             </div>
-        </div>
-        <div class="item show">
-            <div class="card border-0 py-3 px-4">
-                <div class="row justify-content-center">
-                    <img src="https://i.imgur.com/oW8Wpwi.jpg" class="img-fluid profile-pic mb-4 mt-3"/>
+
+            <div class="row text-center">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="card">
+                        <div class="card-body py-4 mt-2">
+                            <div class="d-flex justify-content-center mb-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+                                    class="rounded-circle shadow-1-strong" width="100" height="100" alt="" />
+                            </div>
+                            <h5 class="font-weight-bold">Teresa May</h5>
+                            <h6 class="font-weight-bold my-3">Founder at ET Company</h6>
+                            <ul class="list-unstyled d-flex justify-content-center">
+                                <li>
+                                    <i class="fas fa-star fa-sm text-info"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-info"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-info"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-info"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star-half-alt fa-sm text-info"></i>
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                <i class="fas fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat
+                                ad velit ab hic tenetur.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <h6 class="mb-3 mt-2">Ximena Vegara</h6>
-                <p class="content mb-5 mx-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim.</p>
-            </div>
-        </div>
-        <div class="item next">
-            <div class="card border-0 py-3 px-4">
-                <div class="row justify-content-center">
-                    <img src="https://i.imgur.com/ndQx2Rg.jpg" class="img-fluid profile-pic mb-4 mt-3"/>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="card">
+                        <div class="card-body py-4 mt-2">
+                            <div class="d-flex justify-content-center mb-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(15).webp"
+                                    class="rounded-circle shadow-1-strong" width="100" height="100" alt="" />
+                            </div>
+                            <h5 class="font-weight-bold">Maggie McLoan</h5>
+                            <h6 class="font-weight-bold my-3">Photographer at Studio LA</h6>
+                            <ul class="list-unstyled d-flex justify-content-center">
+                                <li>
+                                    <i class="fas fa-star fa-sm text-info"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-info"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-info"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-info"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-info"></i>
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                <i class="fas fa-quote-left pe-2"></i>Autem, totam debitis suscipit saepe
+                                sapiente magnam officiis quaerat necessitatibus odio assumenda perferendis
+                                labore laboriosam.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <h6 class="mb-3 mt-2">John Paul</h6>
-                <p class="content mb-5 mx-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim.</p>
+                <div class="col-md-4 mb-0">
+                    <div class="card">
+                        <div class="card-body py-4 mt-2">
+                            <div class="d-flex justify-content-center mb-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(17).webp"
+                                    class="rounded-circle shadow-1-strong" width="100" height="100" alt="" />
             </div>
+            <h5 class="font-weight-bold">Alexa Horwitz</h5>
+            <h6 class="font-weight-bold my-3">Front-end Developer in NY</h6>
+            <ul class="list-unstyled d-flex justify-content-center">
+              <li>
+                <i class="fas fa-star fa-sm text-info"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-info"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-info"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-info"></i>
+              </li>
+              <li>
+                <i class="far fa-star fa-sm text-info"></i>
+              </li>
+            </ul>
+            <p class="mb-2">
+              <i class="fas fa-quote-left pe-2"></i>Cras sit amet nibh libero, in gravida
+              nulla metus scelerisque ante sollicitudin commodo cras purus odio,
+              vestibulum in tempus viverra turpis.
+            </p>
+          </div>
         </div>
-        <div class="item last">
-            <div class="card border-0 py-3 px-4">
-                <div class="row justify-content-center">
-                    <img src="https://i.imgur.com/T5aOhwh.jpg" class="img-fluid profile-pic mb-4 mt-3"/>
-                </div>
-                <h6 class="mb-3 mt-2">William Doe</h6>
-                <p class="content mb-5 mx-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim.</p>
-            </div>
-        </div>
-            </div>
-        </div>
+      </div>
+    </div>
+  </div>
+</section>
     );
 };
 
