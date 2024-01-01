@@ -29,8 +29,17 @@ const womenProducts = [
     pic1: bluedress,
     pic2: 'images/women/casual/wc2.jpg',
   },
+  
   {
     id: 4,
+    name: 'BROWN DRESS',
+    price: 1500,
+    salePrice: 750,
+    pic1: browndress,
+    pic2: 'images/women/casual/wc10.jpg',
+  },
+  {
+    id: 5,
     name: 'BROWN DRESS',
     price: 1500,
     salePrice: 750,
