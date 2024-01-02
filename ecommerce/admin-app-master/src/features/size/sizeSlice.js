@@ -3,7 +3,7 @@ import sizeService from "./sizeService";
 
 export const getSizes = createAsyncThunk(
   "size/get-sizes",
-  async (_, thunkAPI) => {
+  async (thunkAPI) => {
     try {
       return await sizeService.getSizes();
     } catch (error) {
@@ -14,10 +14,11 @@ export const getSizes = createAsyncThunk(
 
 export const createSize = createAsyncThunk(
   "size/create-size",
-  async (size, thunkAPI) => {
+  async (sizeData, thunkAPI) => {
     try {
-      return await sizeService.createSize(size);
+      return await sizeService.createSize(sizeData);
     } catch (error) {
+      
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -43,7 +44,7 @@ export const updateSize = createAsyncThunk(
   }
 );
 
-export const deleteSize = createAsyncThunk(
+export const deleteASize = createAsyncThunk(
   "size/delete-size",
   async (id, thunkAPI) => {
     try {
@@ -58,9 +59,14 @@ export const resetState = createAction("Reset_all");
 
 const initialState = {
   // Define your initial state here...
+  sizes: [],
+  isError: false,
+  isLoading: false,
+  isSuccess: false,
+  message: "",
 };
 
-const sizeSlice = createSlice({
+export const sizeSlice = createSlice({
   name: "sizes",
   initialState,
   reducers: {
@@ -81,7 +87,7 @@ extraReducers: (builder) => {
             state.isLoading = false;
             state.isError = true;
             state.isSuccess = false;
-            state.message = action.error;
+            state.message = action.error.message;
         })
         .addCase(createSize.pending, (state) => {
             state.isLoading = true;
@@ -90,7 +96,7 @@ extraReducers: (builder) => {
             state.isLoading = false;
             state.isError = false;
             state.isSuccess = true;
-            state.sizes.push(action.payload);
+            state.createdSize = action.payload;
         })
         .addCase(createSize.rejected, (state, action) => {
             state.isLoading = false;
@@ -120,11 +126,8 @@ extraReducers: (builder) => {
             state.isLoading = false;
             state.isError = false;
             state.isSuccess = true;
-            const updatedSize = action.payload;
-            const index = state.sizes.findIndex((size) => size.id === updatedSize.id);
-            if (index !== -1) {
-                state.sizes[index] = updatedSize;
-            }
+            state.updatedSize = action.payload;
+            
         })
         .addCase(updateSize.rejected, (state, action) => {
             state.isLoading = false;
@@ -132,17 +135,17 @@ extraReducers: (builder) => {
             state.isSuccess = false;
             state.message = action.error;
         })
-        .addCase(deleteSize.pending, (state) => {
+        .addCase(deleteASize.pending, (state) => {
             state.isLoading = true;
         })
-        .addCase(deleteSize.fulfilled, (state, action) => {
+        .addCase(deleteASize.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isError = false;
             state.isSuccess = true;
-            const deletedSizeId = action.payload;
-            state.sizes = state.sizes.filter((size) => size.id !== deletedSizeId);
+            state.deletedSize = action.payload.title;
+  
         })
-        .addCase(deleteSize.rejected, (state, action) => {
+        .addCase(deleteASize.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
             state.isSuccess = false;

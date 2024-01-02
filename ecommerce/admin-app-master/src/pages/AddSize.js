@@ -13,13 +13,13 @@ import {
 } from "../features/size/sizeSlice";
 
 let schema = yup.object().shape({
-    title: yup.string().required("Size Name is Required"),
+    title: yup.string().required("Size is Required"),
 });
 
 const AddSize = () => {
     const dispatch = useDispatch();
     const location = useLocation();
-    const sizeId = location.pathname.split("/")[3];
+    const getsizeId = location.pathname.split("/")[3];
     const navigate = useNavigate();
     const newSize = useSelector((state) => state.size);
     const {
@@ -32,12 +32,12 @@ const AddSize = () => {
     } = newSize;
 
     useEffect(() => {
-        if (sizeId !== undefined) {
-            dispatch(getASize(sizeId));
+        if (getsizeId !== undefined) {
+            dispatch(getASize(getsizeId));
         } else {
             dispatch(resetState());
         }
-    }, [sizeId]);
+    }, [getsizeId]);
 
     useEffect(() => {
         if (isSuccess && createdSize) {
@@ -50,7 +50,7 @@ const AddSize = () => {
         if (isError) {
             toast.error("Something Went Wrong!");
         }
-    }, [isSuccess, isError, isLoading]);
+    }, [isSuccess, isError, isLoading,createdSize]);
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -59,8 +59,8 @@ const AddSize = () => {
         },
         validationSchema: schema,
         onSubmit: (values) => {
-            if (sizeId !== undefined) {
-                const data = { id: sizeId, SizeData: values };
+            if (getsizeId !== undefined) {
+                const data = { id: getsizeId, sizeData: values };
                 dispatch(updateSize(data));
                 dispatch(resetState());
             } else {
@@ -76,7 +76,7 @@ const AddSize = () => {
     return (
         <div>
             <h3 className="mb-4  title">
-                {sizeId !== undefined ? "Edit" : "Add"} Size
+                {getsizeId !== undefined ? "Edit" : "Add"} Size
             </h3>
             <div>
                 <form action="" onSubmit={formik.handleSubmit}>
@@ -86,7 +86,7 @@ const AddSize = () => {
                         onChng={formik.handleChange("title")}
                         onBlr={formik.handleBlur("title")}
                         val={formik.values.title}
-                        id="brand"
+                        id="size"
                     />
                     <div className="error">
                         {formik.touched.title && formik.errors.title}
@@ -95,7 +95,7 @@ const AddSize = () => {
                         className="btn btn-success border-0 rounded-3 my-5"
                         type="submit"
                     >
-                        {sizeId !== undefined ? "Edit" : "Add"} Size
+                        {getsizeId !== undefined ? "Edit" : "Add"} Size
                     </button>
                 </form>
             </div>

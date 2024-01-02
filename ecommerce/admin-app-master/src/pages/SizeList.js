@@ -1,9 +1,12 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSizes, deleteSize, resetState } from '../features/size/sizeSlice';
+import { getSizes, deleteASize } from '../features/size/sizeSlice';
 import CustomModal from '../components/CustomModal';
 import { Table } from 'antd';
-import { toast } from 'react-toastify';
+
+
+import { AiFillDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const columns = [
   {
@@ -32,40 +35,56 @@ const SizeList = () => {
     setOpen(false);
   };
   const dispatch = useDispatch();
-  const { sizes, isSuccess, isError, errorMessage } = useSelector((state) => state.size);
-
   useEffect(() => {
     dispatch(getSizes());
-  }, [dispatch]);
+  }
+  , []);
+  const sizeState = useSelector((state) => state.size.sizes);
+  const data1 = [];
+  for (let i = 0; i < sizeState.length; i++) {
+    data1.push({
+      key: i + 1,
+      name: sizeState[i].name,
+      action: (
+        <>
+          <Link
+            to={`/admin/size/${sizeState[i]._id}`}
+            className=" fs-3 text-danger"
+          >
+            
+          </Link>
+          <button
+            className="ms-3 fs-3 text-danger bg-transparent border-0"
+            onClick={() => showModal(sizeState[i]._id)}
+          >
+            <AiFillDelete />
+          </button>
+        </>
+      ),
+    });
+  }
+  const deleteSize = (e) => {
+    dispatch(deleteASize(e));
 
-  useEffect(() => {
-    if (isSuccess) {
-      toast.success('Size deleted successfully');
-      dispatch(resetState());
-    }
-    if (isError) {
-      toast.error(errorMessage);
-      dispatch(resetState());
-    }
-  }, [isSuccess, isError, errorMessage, dispatch]);
-
-  const handleDelete = (id) => {
-    dispatch(deleteSize(id));
+    setOpen(false);
+    setTimeout(() => {
+      dispatch(getSizes());
+    }, 100);
   };
 
   return (
     <div>
       <h3 className="mb-4 title">Product Sizes</h3>
       <div>
-        <Table columns={columns} dataSource={sizes} />
+        <Table columns={columns} dataSource={data1} />
       </div>
       <CustomModal
-        open={open}
-        hideModal={hideModal}
-        performAction={() => {
-          handleDelete(sizeId);
-        }}
-        title="Are you sure you want to delete this Product Size?"
+       hideModal={hideModal}
+       open={open}
+       performAction={() => {
+         deleteSize(sizeId);
+       }}
+       title="Are you sure you want to delete this brand?"
       />
     </div>
   );
