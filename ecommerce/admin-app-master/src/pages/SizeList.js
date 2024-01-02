@@ -1,8 +1,9 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSizes, deleteASize } from '../features/size/sizeSlice';
+import { getSizes, deleteASize,resetState } from '../features/size/sizeSlice';
 import CustomModal from '../components/CustomModal';
 import { Table } from 'antd';
+
 
 
 import { AiFillDelete } from "react-icons/ai";
@@ -36,7 +37,9 @@ const SizeList = () => {
   };
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(resetState());
     dispatch(getSizes());
+
   }
   , []);
   const sizeState = useSelector((state) => state.size.sizes);
@@ -51,7 +54,7 @@ const SizeList = () => {
             to={`/admin/size/${sizeState[i]._id}`}
             className=" fs-3 text-danger"
           >
-            
+           
           </Link>
           <button
             className="ms-3 fs-3 text-danger bg-transparent border-0"

@@ -15,11 +15,12 @@ const createSize = async (size) => {
 };
 
 const updateSize = async (size) => {
-    const response = await axios.put(
-      `${base_url}size/${size.id}`,
-      { title: size.sizeData.title },
-      config
-    );
+  console.log(size);
+  const response = await axios.put(
+    `${base_url}size/${size.id}`,
+    { name: size.pCatData.name },
+    config
+  );
   
     return response.data;
   };

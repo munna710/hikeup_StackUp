@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import { getSizes } from "../features/size/sizeSlice";
 import { getCategories } from "../features/pcategory/pcategorySlice";
 import { getColors } from "../features/color/colorSlice";
 import { Select } from "antd";
@@ -17,6 +18,7 @@ let schema = yup.object().shape({
   title: yup.string().required("Title is Required"),
   description: yup.string().required("Description is Required"),
   price: yup.number().required("Price is Required"),
+  
   category: yup.string().required("Category is Required"),
   tags: yup.string().required("Tag is Required"),
   color: yup
@@ -24,6 +26,8 @@ let schema = yup.object().shape({
     .min(1, "Pick at least one color")
     .required("Color is Required"),
   quantity: yup.number().required("Quantity is Required"),
+  
+
 });
 
 const Addproduct = () => {
@@ -31,13 +35,17 @@ const Addproduct = () => {
   const navigate = useNavigate();
   const [color, setColor] = useState([]);
   const [images, setImages] = useState([]);
+  const [size, setSize] = useState([]);
+  console.log(size);
   console.log(color);
+  console.log(images);
   useEffect(() => {
+    dispatch(getSizes());
     dispatch(getCategories());
     dispatch(getColors());
   }, []);
 
-  
+  const sizeState = useSelector((state) => state.size.sizes);
   const catState = useSelector((state) => state.pCategory.pCategories);
   const colorState = useSelector((state) => state.color.colors);
   const imgState = useSelector((state) => state.upload.images);
@@ -65,11 +73,19 @@ const Addproduct = () => {
       url: i.url,
     });
   });
+  const sizeopt = [];
+  sizeState.forEach((i) => {
+    sizeopt.push({
+      label: i.name,
+      value: i._id,
+    });
+  });
 
   useEffect(() => {
     formik.values.color = color ? color : " ";
+    formik.values.size = size ? size : " ";
     formik.values.images = img;
-  }, [color, img]);
+  }, [color, img,size]);
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -77,7 +93,8 @@ const Addproduct = () => {
       price: "",
       category: "",
       tags: "",
-      color: "",
+      color: [],
+      size: [],
       quantity: "",
       images: "",
     },
@@ -95,6 +112,11 @@ const Addproduct = () => {
     setColor(e);
     console.log(color);
   };
+  const handleSizes = (e) => {
+    setSize(e);
+    console.log(size);
+  };
+
   return (
     <div>
       <h3 className="mb-4 title">Add Product</h3>
@@ -136,7 +158,6 @@ const Addproduct = () => {
           <div className="error">
             {formik.touched.price && formik.errors.price}
           </div>
-          
           
           <select
             name="category"
@@ -188,6 +209,19 @@ const Addproduct = () => {
           />
           <div className="error">
             {formik.touched.color && formik.errors.color}
+          </div>
+
+          <Select
+            mode="multiple"
+            allowClear
+            className="w-100"
+            placeholder="Select sizes"
+            defaultValue={size}
+            onChange={(i) => handleSizes(i)}
+            options={sizeopt}
+          />
+          <div className="error">
+            {formik.touched.size && formik.errors.size}
           </div>
           <CustomInput
             type="number"
@@ -242,5 +276,6 @@ const Addproduct = () => {
     </div>
   );
 };
+
 
 export default Addproduct;

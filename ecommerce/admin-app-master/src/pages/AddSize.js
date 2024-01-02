@@ -13,7 +13,7 @@ import {
 } from "../features/size/sizeSlice";
 
 let schema = yup.object().shape({
-    title: yup.string().required("Size is Required"),
+    name: yup.string().required("Size is Required"),
 });
 
 const AddSize = () => {
@@ -50,12 +50,12 @@ const AddSize = () => {
         if (isError) {
             toast.error("Something Went Wrong!");
         }
-    }, [isSuccess, isError, isLoading,createdSize]);
+    }, [isSuccess, isError, isLoading]);
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            title: sizeName || "",
+            name: sizeName || "",
         },
         validationSchema: schema,
         onSubmit: (values) => {
@@ -79,17 +79,17 @@ const AddSize = () => {
                 {getsizeId !== undefined ? "Edit" : "Add"} Size
             </h3>
             <div>
-                <form action="" onSubmit={formik.handleSubmit}>
+                <form  onSubmit={formik.handleSubmit}>
                     <CustomInput
                         type="text"
                         label="Enter Product Size"
-                        onChng={formik.handleChange("title")}
-                        onBlr={formik.handleBlur("title")}
-                        val={formik.values.title}
+                        onChng={formik.handleChange("name")}
+                        onBlr={formik.handleBlur("name")}
+                        val={formik.values.name}
                         id="size"
                     />
                     <div className="error">
-                        {formik.touched.title && formik.errors.title}
+                        {formik.touched.name && formik.errors.name}
                     </div>
                     <button
                         className="btn btn-success border-0 rounded-3 my-5"
