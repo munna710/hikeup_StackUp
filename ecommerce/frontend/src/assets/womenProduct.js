@@ -12,6 +12,17 @@ const womenProducts = [
     salePrice: 600,
     pic1: greendress,
     pic2: 'images/women/casual/wc1.jpg',
+    description: 'This is a beautiful green dress.',
+    reviews: [
+      {
+        text: 'Great dress!',
+        rating: 5
+      },
+      {
+        text: 'I love the color.',
+        rating: 4
+      }
+    ]
   },
   {
     id: 2,
