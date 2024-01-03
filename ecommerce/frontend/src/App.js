@@ -12,6 +12,7 @@ import Signup from './pages/Signup';
 import Singlepd from './pages/Singlepd';
 import Women from './pages/women';
 import Blog from './pages/Blog';
+import SingleBlog from './pages/Singleblog';
 
 function App() {
   return (<>
@@ -29,6 +30,7 @@ function App() {
           <Route path=':category/*' element={<Women category='women'/>} />
           <Route path ="Blog" element={<Blog />} />
           <Route path=':product/:id' element={<Singlepd />} />
+          <Route path=':Blog/:id' element={<SingleBlog />} />
 
         </Route>
       </Routes>

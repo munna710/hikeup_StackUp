@@ -42,6 +42,7 @@ const ratingChanged = (newRating) => {
         <div class="card-body">
       {reviews.map((review, index) => (
         <div key={index} class="list-group-item">
+          <h5 class="card-title">{review.user}</h5>
           <p class="card-title">{review.text}</p>
           <ReactStars
             count={5}

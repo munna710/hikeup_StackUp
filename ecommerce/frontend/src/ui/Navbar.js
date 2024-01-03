@@ -1,6 +1,7 @@
 import React from "react";
 import logo from '../assets/logo2.png';
 import { BsBag } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import './Navbar.css';
 const Navbar = () => {
     return (
@@ -36,7 +37,7 @@ const Navbar = () => {
                 <BsBag size={32} />
                 </a>
                 <div className="text-end">
-                    <button type="button" className="btn btn-outline-dark me-2">LOGIN</button>
+                    <Link to="/login" type="link" className="btn btn-outline-dark me-2">LOGIN</Link>
                 </div>
                 
                 </div>
