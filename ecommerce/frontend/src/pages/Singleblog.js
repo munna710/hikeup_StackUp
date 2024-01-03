@@ -7,10 +7,7 @@ const SingleBlog = () => {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    console.log('id:', id);
-    console.log('blogData:', blogData);
     const blogPost = blogData.find(blog => blog.id === id);
-    console.log('blogPost:', blogPost);
     setBlog(blogPost);
   }, [id]);
 
