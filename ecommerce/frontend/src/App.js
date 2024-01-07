@@ -22,12 +22,12 @@ function App() {
           <Route index element={<Home />} />
           <Route path ="About" element={<About />} />
           <Route path ="Contact" element={<Contact />} />
-          <Route path ="Girls" element={<Girls />} />
           <Route path ="Login" element={<Login />} />
           <Route path ="Forgotpassword" element={<Forgotpassword />} />
           <Route path ="Signup" element={<Signup />} />
           
           <Route path=':category/*' element={<Women category='women'/>} />
+          <Route path=':category/*' element={<Girls category='girls'/>} />
           <Route path ="Blog" element={<Blog />} />
           <Route path=':product/:id' element={<Singlepd />} />
           <Route path='Blog/:id' element={<SingleBlog />} />

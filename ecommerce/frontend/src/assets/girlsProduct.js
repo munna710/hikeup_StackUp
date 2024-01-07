@@ -1,6 +1,6 @@
 import reddress from './redg.JPG';
 import greendress from './grdres.JPG';
-import floraldress from '.floralg.JPG';
+import floraldress from './floralg.JPG';
 import bluedress  from './blueg.JPG';
 
 const girlsProducts = [
@@ -99,10 +99,10 @@ const girlsProducts = [
     },
     {
       id: 5,
-      name: 'BROWN DRESS',
+      name: 'FLORAL DRESS',
       price: 1500,
       salePrice: 750,
-      pic1: browndress,
+      pic1: floraldress,
       pic2: 'images/women/casual/wc10.jpg',
       color:'green',
       sizes:['S', 'M', 'L', 'XL'],
