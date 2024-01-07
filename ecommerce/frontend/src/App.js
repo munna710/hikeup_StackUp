@@ -26,8 +26,8 @@ function App() {
           <Route path ="Forgotpassword" element={<Forgotpassword />} />
           <Route path ="Signup" element={<Signup />} />
           
-          <Route path=':category/*' element={<Women category='women'/>} />
-          <Route path=':category/*' element={<Girls category='girls'/>} />
+          <Route path='women/*' element={<Women category='women'/>} />
+          <Route path='girls/*' element={<Girls category='girls'/>} />
           <Route path ="Blog" element={<Blog />} />
           <Route path=':product/:id' element={<Singlepd />} />
           <Route path='Blog/:id' element={<SingleBlog />} />

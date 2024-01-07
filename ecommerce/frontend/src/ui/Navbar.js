@@ -15,7 +15,7 @@ const Navbar = () => {
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
                 <li className="nav-item"><a href="/" class="nav-link px-2 link-secondary hover-effect">HOME</a></li>
                 <li className="nav-item"><a href="/women" class="nav-link px-2 link-dark hover-effect">WOMEN</a></li>
-                <li className="nav-item"><a href="/Girls" class="nav-link px-2 link-dark hover-effect">GIRLS</a></li>
+                <li className="nav-item"><a href="/girls" class="nav-link px-2 link-dark hover-effect">GIRLS</a></li>
                 <li className="nav-item dropdown">
                 <a href="#" className="nav-link px-2 link-dark hover-effect dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">ACCESSORIES</a>
                 <ul className="dropdown-menu fade-up" aria-labelledby="navbarDropdownMenuLink">
