@@ -28,8 +28,8 @@ export const Footer = () => {
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">WOMAN</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">GIRLS</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ACCESSORIES</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">CONTACT</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ABOUT</a></li>
+          <li class="nav-item mb-2"><a href="/Contact" class="nav-link p-0 text-muted">CONTACT</a></li>
+          <li class="nav-item mb-2"><a href="/About"class="nav-link p-0 text-muted">ABOUT</a></li>
         </ul>
       </div>
 
