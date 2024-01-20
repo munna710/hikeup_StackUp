@@ -33,7 +33,7 @@ const Navbar = () => {
                 </form>
               
                 <div class="d-flex align-items-center justify-content-end col-md-3">
-                <a href="#" className="link-dark me-3 bag-icon">
+                <a href="/Cart" className="link-dark me-3 bag-icon">
                 <BsBag size={32} />
                 </a>
                 <div className="text-end">

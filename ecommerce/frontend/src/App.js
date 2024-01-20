@@ -13,6 +13,7 @@ import Singlepd from './pages/Singlepd';
 import Women from './pages/women';
 import Blog from './pages/Blog';
 import SingleBlog from './pages/Singleblog';
+import Cart from './pages/Cart';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path ="Login" element={<Login />} />
           <Route path ="Forgotpassword" element={<Forgotpassword />} />
           <Route path ="Signup" element={<Signup />} />
+          <Route path="Cart" element={<Cart />} />
           
           <Route path='women/*' element={<Women category='women'/>} />
           <Route path='girls/*' element={<Girls category='girls'/>} />
