@@ -14,6 +14,7 @@ import Women from './pages/women';
 import Blog from './pages/Blog';
 import SingleBlog from './pages/Singleblog';
 import Cart from './pages/Cart';
+import Wishlist from './pages/Wishlist';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path ="Blog" element={<Blog />} />
           <Route path=':product/:id' element={<Singlepd />} />
           <Route path='Blog/:id' element={<SingleBlog />} />
+          <Route path='Wishlist' element={<Wishlist />} />
 
         </Route>
       </Routes>
