@@ -15,7 +15,7 @@ import Blog from './pages/Blog';
 import SingleBlog from './pages/Singleblog';
 import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
-
+import Checkout from './pages/Checkout';
 
 function App() {
   return (<>
@@ -36,7 +36,7 @@ function App() {
           <Route path=':product/:id' element={<Singlepd />} />
           <Route path='Blog/:id' element={<SingleBlog />} />
           <Route path='Wishlist' element={<Wishlist />} />
-
+          <Route path='Checkout' element={<Checkout />} />
         </Route>
       </Routes>
     </BrowserRouter>
