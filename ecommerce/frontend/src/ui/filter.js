@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './filter.css';
-import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css';
+import RangeSlider from 'react-range-slider-input';
 
 export const Filter = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -23,12 +22,12 @@ export const Filter = () => {
 
           <div className='filter-option mb-3'>
             <label htmlFor="customRange1" className="form-label mb-3">Price Range</label>
-            <InputRange
-              maxValue={2000}
-              minValue={400}
-              step={100}
-              value={value}
-              onChange={value => setValue(value)} />
+            <RangeSlider
+        min={0}
+        max={100}
+        step={1}
+        onChange={value => console.log(value)}
+      />
           </div>
           <div className='filter-option'>
             <label className="form-label">Color</label>
