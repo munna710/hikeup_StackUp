@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Checkout = () => {
         return (
                 <>
-                <div className="checkout-wrapper py-5 home-wrapper-2">
+                <div style={{backgroundColor:"#e8e8e8"}} className="checkout-wrapper py-5 home-wrapper-2 ">
                 <div className="container-xxl">
                         <div className="row">
                         <div className="col-6">
@@ -18,11 +18,11 @@ const Checkout = () => {
                                             </ol>
                                             </nav>
                                             <div className=''>
-                                            <h4 className="title">Contact Information</h4>
+                                            <h4 >Contact Information</h4>
                                             <p className="user-details">
                                             Munna710 (Munna710@gmail.com)
                                             </p>
-                                            
+                                            <h4>Shipping Address</h4>
                                     <form action="" className='d-flex gap-15 flex-wrap justify-content-between'>
                                         <div className="w-100">
                                             <select name="" className="form-control form-select" id="">
@@ -100,25 +100,63 @@ const Checkout = () => {
                                     </div>
                                     <div className='col-1'></div>
                                     <div className='col-5'>
-                                    <div className="border-bottom py-4">
-                                        <div className='container'>
-                                        <div className='d-flex gap-10 justify-content-start'>
-                                        <div className='w-50 d-flex'>
-                        <div className='w-50' >
-                        <img className='img-fluid' src="/images/women/casual/wc1.jpg" alt="product" />
-                        </div>
-                        <div className='align-items-end'>
-                            <h5 className='title'>green dress</h5>
-                            <p>jnjkcndnc</p>
-                        </div>
-
-                    </div>
-                    </div>
-                    </div>
-                    <div className='flex-grow-1'>
-                        <h5>$ 100</h5>
-                    </div>
-                    <div className="border-bottom py-4">
+                                    <div className="border-bottom py-4 border-dark">
+                                       
+                                        <div className='d-flex justify-content-between align-items-center bg-light border-bottom py-4 border-dark'>
+                                            <div className='w-75 d-flex '>
+                                                <div className='w-25 position-relative'>
+                                                    <span style={{ top: "20px", right: "2px", zIndex: '1' }} className='badge bg-secondary text-white rounded-circle p-2 position-relative'>1</span>
+                                                    <img  className='img-fluid  border border-secondary ' src="/images/women/casual/wc1.jpg" alt="product" />
+                                                </div>
+                                                <div className='text-center'>
+                                                    <h5 className='title'>green dress </h5>
+                                                    <p className='px-3'>jnjkcndnc fuhrjrjfrjf</p>
+                                                </div>
+                                                <div className='flex-grow-1 text-end'>
+                                                    <h5>$ 100</h5>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        <div className='d-flex justify-content-between align-items-center bg-light border-bottom py-4 border-dark'>
+                                            <div className='w-75 d-flex '>
+                                                <div className='w-25 position-relative'>
+                                                    <span style={{ top: "20px", right: "2px", zIndex: '1' }} className='badge bg-secondary text-white rounded-circle p-2 position-relative'>1</span>
+                                                    <img  className='img-fluid  border border-secondary ' src="/images/women/casual/wc1.jpg" alt="product" />
+                                                </div>
+                                                <div className='text-center'>
+                                                    <h5 className='title'>green dress </h5>
+                                                    <p className='px-3'>jnjkcndnc fuhrjrjfrjfjrjr</p>
+                                                </div>
+                                                <div className='flex-grow-1 text-end'>
+                                                    <h5>$ 100</h5>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        <div className='d-flex justify-content-between align-items-center bg-light border-bottom py-4 border-dark'>
+                                            <div className='w-75 d-flex '>
+                                                <div className='w-25 position-relative'>
+                                                    <span style={{ top: "20px", right: "2px", zIndex: '1' }} className='badge bg-secondary text-white rounded-circle p-2 position-relative'>1</span>
+                                                    <img  className='img-fluid  border border-secondary ' src="/images/women/casual/wc1.jpg" alt="product" />
+                                                </div>
+                                                <div className='text-center'>
+                                                    <h5 className='title'>green dress </h5>
+                                                    <p className='px-3'>jnjkcndnc fuhrjrjfrjfjrjr</p>
+                                                </div>
+                                                <div className='flex-grow-1 text-end'>
+                                                    <h5>$ 100</h5>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                    
+                    
+                    
+                    <div className="border-bottom py-4 border-dark">
                     <div className="d-flex justify-content-between align-items-center">
                         <p>Subtotal</p>
                         <p>$ 1000</p>
@@ -129,7 +167,7 @@ const Checkout = () => {
                         <p className="mb-0">$ 1000</p>
                     </div>
 
-                    <div className="d-flex justify-content-between align-items-center border-bottom py-4">
+                    <div className="d-flex justify-content-between align-items-center border-bottom py-4 border-dark">
                         <h4>Total</h4> 
                         <h5>$1000</h5> 
                     </div> 

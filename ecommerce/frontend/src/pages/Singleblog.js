@@ -1,28 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import blogData from '../assets/blogdata'; // Assuming this is the correct path
 
-const SingleBlog = () => {
-  const { id } = useParams();
-  const [blog, setBlog] = useState(null);
+import React from 'react';
+import blogData from '../assets/blogdata';
 
-  useEffect(() => {
-    const blogPost = blogData.find(blog => blog.id === id);
-    setBlog(blogPost);
-  }, [id]);
+
+const Singleblog = () => {
+  const blog = blogData[0]; // Assuming you want to use the first blog entry
 
   return (
-    <div>
-      {blog ? (
-        <div>
-          <h1>{blog.title}</h1>
-          <p>{blog.content}</p>
+    <>
+      <div style={{backgroundColor:"#e8e8e8"}} className='container'>
+        <div className='row'>
+          
         </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+        <div className="row mt-5">
+          <div className="col-12">
+            <div className="blog-content">
+              <h2>{blog.title}</h2>
+              <p>{blog.content}</p>
+              <p><span className="text-primary">Author: </span>{blog.author}</p>
+              <p><span className="text-primary">Published on: </span>{blog.publishedDate}</p>
+              
+              <img className="image-fluid custom-imageBLOG" src={blog.image} alt="" />
+              
+              <article>
+                
+                
+                <p className='title bg-dark text-light'>{blog.description}</p>
+                {/* Additional content */}
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
-export default SingleBlog;
+export default Singleblog;
