@@ -8,6 +8,7 @@ const initialState = {
   user: getUserfromLocalStorage,
   customers: [],
   orders: [],
+  orderbyuser: [],
   isError: false,
   isLoading: false,
   isSuccess: false,
