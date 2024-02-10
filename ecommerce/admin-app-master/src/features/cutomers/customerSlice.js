@@ -19,7 +19,7 @@ const initialState = {
   message: "",
 };
 export const customerSlice = createSlice({
-  name: "users",
+  name: "customers",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -37,7 +37,7 @@ export const customerSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
-        state.message = action.error;
+        state.message = action.error.message;
       });
   },
 });

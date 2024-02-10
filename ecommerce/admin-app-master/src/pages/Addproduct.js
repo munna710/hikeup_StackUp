@@ -20,7 +20,7 @@ let schema = yup.object().shape({
   price: yup.number().required("Price is Required"),
   
   category: yup.string().required("Category is Required"),
-  tags: yup.string().required("Tag is Required"),
+  
   color: yup
     .array()
     .min(1, "Pick at least one color")
@@ -179,24 +179,8 @@ const Addproduct = () => {
           <div className="error">
             {formik.touched.category && formik.errors.category}
           </div>
-          <select
-            name="tags"
-            onChange={formik.handleChange("tags")}
-            onBlur={formik.handleBlur("tags")}
-            value={formik.values.tags}
-            className="form-control py-3 mb-3"
-            id=""
-          >
-            <option value="" disabled>
-              Select Category
-            </option>
-            <option value="featured">Featured</option>
-            <option value="popular">Popular</option>
-            <option value="special">Special</option>
-          </select>
-          <div className="error">
-            {formik.touched.tags && formik.errors.tags}
-          </div>
+          
+           
 
           <Select
             mode="multiple"
