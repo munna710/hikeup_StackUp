@@ -1,28 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTowishlist } from '../features/user/userSlice';
 
 const ProductCard = (props) => {
   const {data} = props;
+  const dispatch = useDispatch();
   console.log(data);
   // let location = useLocation();
-  if (!Array.isArray(data)) {
-    console.error('Invalid data format. Expected an array.');
-    return null; // or handle the error in an appropriate way
-  }
+  const addToWish = (id) => {
+    dispatch(addTowishlist(id));
+};
+
   return (
     <>
       
       {data?.map((item, index) => {
+        const imageUrl = item.images && item.images[0] ? item.images[0].url : 'defaultImageUrl';
+        const imageUrl2 = item.images && item.images[1] ? item.images[1].url : 'defaultImageUrl';
         return (
           <div className="col-md-3 col-sm-6" key={index}>
             <div className="product-grid">
               <div className="product-image">
                 <a href="#" className="image">
-                  <img className="pic-1" src={item?.images[0]} alt="Product Image" />
-                  <img className="pic-2" src={item?.images[1]} alt="Product Image" />
+                  <img className="pic-1" src={imageUrl} alt="Product Image" />
+                  <img className="pic-2" src={imageUrl2} alt="Product Image" />
                 </a>
                 
-                <a href="#" className="product-like-icon" data-tip="Add to Wishlist">
+                <a href="#" className="product-like-icon" data-tip="Add to Wishlist" onClick={(e) => addToWish(item?._id)}>
                   <i className="far fa-heart"></i>
                 </a>
                 <ul className="product-links">
