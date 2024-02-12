@@ -14,11 +14,17 @@ const addTowishlist = async (prodId) => {
       return response.data;
   }
 };
-
+const getSingleProduct = async (id) => {
+  const response = await axios.get(`${base_url}product/${id}`);
+  if (response.data) {
+    return response.data;
+  }
+};
 
 export const productService = {
 
  getProducts,
- addTowishlist
+ addTowishlist,
+ getSingleProduct,
   
 };
