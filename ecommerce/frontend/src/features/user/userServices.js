@@ -16,8 +16,15 @@ const login = async (userData) => {
     return response.data;
   
 };
+
 const addTowishlist = async (prodId) => {
   const response = await axios.put(`${base_url}product/wishlist`, { prodId },config);
+  if (response.data) {
+      return response.data;
+  }
+};
+const getUserWishlist = async () => {
+  const response = await axios.get(`${base_url}user/wishlist`,config);
   if (response.data) {
       return response.data;
   }
@@ -26,5 +33,6 @@ export const authService = {
   register,
   login,
   addTowishlist,
+  getUserWishlist,
   
 };
