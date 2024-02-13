@@ -7,6 +7,8 @@ import Review from '../components/Review';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAProduct } from '../features/products/productSlice';
 import ReactStars from "react-rating-stars-component";
+import Color from '../components/Color';
+
 const SingleProduct = () => {
   const location = useLocation();
   const getProductId = location.pathname.split("/")[2];
@@ -18,8 +20,10 @@ const SingleProduct = () => {
 
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const [color, setColor] = useState('');
-  const [size, setSize] = useState('');
+  console.log(quantity);
+  
+  const [color, setColor] = useState(null);
+  console.log(color);
   const product = womenProducts.find((product) => product.id === Number(id));
   const [reviews, setReviews] = useState(product ? product.reviews : []);
   const handleReviewSubmit = (reviewText, rating) => {
@@ -30,7 +34,9 @@ const SingleProduct = () => {
   if (!productState) {
     return <div>Product not found</div>;
   }
- 
+ const uploadcart = () => {
+  alert("Product Added To Cart !");
+ }
   return (
     <div className='container border'>
       <div className='section py-5'>
@@ -51,11 +57,10 @@ const SingleProduct = () => {
                 </div>
               <div className='border-top'>
               
-              <div className='mt-3'>
+              <div className='mt-3 '>
               <label className='me-2 fw-bold'>Color:</label>
-              {['green', 'red', 'blue', 'black', 'brown'].map((color, index) => (
-                <div key={index} style={{ backgroundColor: color, width: '20px', height: '20px', display: 'inline-block', margin: '5px', verticalAlign: 'middle' }}></div>
-              ))}
+              <span><Color setColor={setColor} colorData={productState?.color} /></span>
+              
             </div>
             </div>
               <div className='mt-3'>
@@ -74,8 +79,8 @@ const SingleProduct = () => {
               <p dangerouslySetInnerHTML={{ __html: productState?.description }} className='text-dark'></p>
               <div className='d-flex'>
                 <input className='form-control  me-3' id='inputQuantity' type='number'
-                  value={quantity} onChange={e => setQuantity(e.target.value)} min="1" style={{ maxWidth: '6rem' }} />
-                <button className='btn btn-outline-dark flex-shrink-0' type='button'>
+                  value={quantity} onChange={e => setQuantity(e.target.value)} min="1" max={productState?.quantity} style={{ maxWidth: '6rem' }} />
+                <button className='btn btn-outline-dark flex-shrink-0' type='button' onClick={()=>{uploadcart()}}>
                   <i className='bi-cart-fill me-1'></i>
                   Add to cart
                 </button>

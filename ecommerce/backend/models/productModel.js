@@ -42,8 +42,8 @@ var productSchema = new mongoose.Schema(
         url: String,
       },
     ],
-    sizes:[],
-    color: [],
+    sizes:[{ type: mongoose.Schema.Types.ObjectId, ref: "Size" }],
+    color: [{ type: mongoose.Schema.Types.ObjectId, ref: "Color" }],
     tags: String,
     ratings: [
       {

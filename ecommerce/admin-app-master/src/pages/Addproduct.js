@@ -26,7 +26,10 @@ let schema = yup.object().shape({
     .min(1, "Pick at least one color")
     .required("Color is Required"),
   quantity: yup.number().required("Quantity is Required"),
-  
+  sizes: yup
+    .array()
+    .min(1, "Pick at least one size")
+    .required("size is Required"),
 
 });
 
@@ -35,8 +38,8 @@ const Addproduct = () => {
   const navigate = useNavigate();
   const [color, setColor] = useState([]);
   const [images, setImages] = useState([]);
-  const [size, setSize] = useState([]);
-  console.log(size);
+  const [sizes, setSize] = useState([]);
+  console.log(sizes);
   console.log(color);
   console.log(images);
   useEffect(() => {
@@ -83,9 +86,9 @@ const Addproduct = () => {
 
   useEffect(() => {
     formik.values.color = color ? color : " ";
-    formik.values.size = size ? size : " ";
+    formik.values.sizes = sizes ? sizes : " ";
     formik.values.images = img;
-  }, [color, img,size]);
+  }, [color, img,sizes]);
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -94,7 +97,7 @@ const Addproduct = () => {
       category: "",
       tags: "",
       color: [],
-      size: [],
+      sizes: [],
       quantity: "",
       images: "",
     },
@@ -114,7 +117,7 @@ const Addproduct = () => {
   };
   const handleSizes = (e) => {
     setSize(e);
-    console.log(size);
+    console.log(sizes);
   };
 
   return (
@@ -200,12 +203,12 @@ const Addproduct = () => {
             allowClear
             className="w-100"
             placeholder="Select sizes"
-            defaultValue={size}
+            defaultValue={sizes}
             onChange={(i) => handleSizes(i)}
             options={sizeopt}
           />
           <div className="error">
-            {formik.touched.size && formik.errors.size}
+            {formik.touched.sizes && formik.errors.sizes}
           </div>
           <CustomInput
             type="number"
