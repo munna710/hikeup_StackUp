@@ -8,6 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAProduct } from '../features/products/productSlice';
 import ReactStars from "react-rating-stars-component";
 import Color from '../components/Color';
+import Size from '../components/size';
+import { addProdToCart } from '../features/user/userSlice';
+import { toast } from 'react-toastify';
 
 const SingleProduct = () => {
   const location = useLocation();
@@ -24,6 +27,9 @@ const SingleProduct = () => {
   
   const [color, setColor] = useState(null);
   console.log(color);
+  const [sizes, setSize] = useState(null);
+
+  console.log(sizes);
   const product = womenProducts.find((product) => product.id === Number(id));
   const [reviews, setReviews] = useState(product ? product.reviews : []);
   const handleReviewSubmit = (reviewText, rating) => {
@@ -34,9 +40,20 @@ const SingleProduct = () => {
   if (!productState) {
     return <div>Product not found</div>;
   }
- const uploadcart = () => {
-  alert("Product Added To Cart !");
- }
+  const uploadcart = () => {
+    if (color === null) {
+        toast.error("Please Choose Color")
+        return false
+    }
+    else if (sizes === null) {
+      toast.error("Please Choose Size")
+      return false
+    }
+     else {
+        dispatch(addProdToCart({productId:productState._id,quantity,color,price:productState.price,sizes}))
+    }
+}
+
   return (
     <div className='container border'>
       <div className='section py-5'>
@@ -65,12 +82,9 @@ const SingleProduct = () => {
             </div>
               <div className='mt-3'>
               <label className='me-2 fw-bold'>Size:</label>
-              {['S', 'M', 'L'].map((size, index) => (
-                <label className="btn btn-outline-dark form-check-label me-2" key={index}>
-                  <input className="form-check-input" type="radio" name="sizeOptions" value={size} style={{display: 'none'}}/>
-                  {size}
-                </label>
-              ))}
+              <span><Size setSize={setSize} sizeData={productState?.sizes}/></span>
+               
+            
             </div>
             <div className='mt-3'>
               <label className='me-2 fw-bold'>Availability:</label>
