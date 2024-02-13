@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import womenProducts from '../assets/womenProduct';
 import '../ui/MostLoved';
 import MostLoved from '../ui/MostLoved';
@@ -9,18 +9,30 @@ import { getAProduct } from '../features/products/productSlice';
 import ReactStars from "react-rating-stars-component";
 import Color from '../components/Color';
 import Size from '../components/size';
-import { addProdToCart } from '../features/user/userSlice';
+import { addProdToCart,getUserCart } from '../features/user/userSlice';
 import { toast } from 'react-toastify';
 
 const SingleProduct = () => {
   const location = useLocation();
   const getProductId = location.pathname.split("/")[2];
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [alreadyAdded, setAlreadyAdded] = useState(false);
   const productState = useSelector(state => state.product.product);
+  const cartState = useSelector(state => state.auth.cartProducts);
   useEffect(() => {
     dispatch(getAProduct(getProductId));
+    dispatch(getUserCart());
   }, []);
-
+  useEffect(() => {
+    if (cartState) {
+      for(let index = 0; index < cartState.length; index++){
+        if(getProductId === cartState[index]?.productId?._id){
+          setAlreadyAdded(true);
+        }
+      }
+    }
+  }, []);
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
   console.log(quantity);
@@ -51,6 +63,7 @@ const SingleProduct = () => {
     }
      else {
         dispatch(addProdToCart({productId:productState._id,quantity,color,price:productState.price,sizes}))
+        navigate('/cart');
     }
 }
 
@@ -92,11 +105,21 @@ const SingleProduct = () => {
             </div>
               <p dangerouslySetInnerHTML={{ __html: productState?.description }} className='text-dark'></p>
               <div className='d-flex'>
-                <input className='form-control  me-3' id='inputQuantity' type='number'
-                  value={quantity} onChange={e => setQuantity(e.target.value)} min="1" max={productState?.quantity} style={{ maxWidth: '6rem' }} />
-                <button className='btn btn-outline-dark flex-shrink-0' type='button' onClick={()=>{uploadcart()}}>
+                {alreadyAdded === false && <>
+                <div>
+                  
+                <input className='form-control  me-3' 
+                id='inputQuantity' type='number'
+                  value={quantity} 
+                  onChange={e => setQuantity(e.target.value)} 
+                  min="1" 
+                  max={productState?.quantity} 
+                  style={{ maxWidth: '6rem' }} />
+                </div>
+                </>  }
+                <button className='btn btn-outline-dark flex-shrink-0' type='button' onClick={()=>{alreadyAdded?navigate('/cart'): uploadcart()}}>
                   <i className='bi-cart-fill me-1'></i>
-                  Add to cart
+                  {alreadyAdded? 'Go to cart' : 'Add to cart'}
                 </button>
               </div>
             </div>
