@@ -33,7 +33,7 @@ const Cart = () => {
     } ,[productUpdateDetail]);
     useEffect(() => {
         let sum = 0;
-        for(let index = 0; index < userCartState.length; index++){
+        for(let index = 0; index < userCartState?.length; index++){
             sum = sum + (Number(userCartState[index]?.price * userCartState[index]?.quantity));
             setTotalAmount(sum)
 
