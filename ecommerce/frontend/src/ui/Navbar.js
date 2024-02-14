@@ -3,7 +3,10 @@ import logo from '../assets/logo2.png';
 import { BsBag } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import './Navbar.css';
+import { useSelector } from "react-redux";
+
 const Navbar = () => {
+    const authState = useSelector((state) => state.auth);
     return (
         <div className="container  ">
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom fixed-top bg-light my-navbar">
@@ -36,10 +39,28 @@ const Navbar = () => {
                 <a href="/Cart" className="link-dark me-3 bag-icon">
                 <BsBag size={32} />
                 </a>
-                <div className="text-end">
-                    <Link to="/login" type="link" className="btn btn-outline-dark me-2">LOGIN</Link>
+                <div className="text-end me-2">
+                    <Link to="/login" type="link" className="btn btn-outline-dark me-2">
+                        {
+                            authState.isSuccess?  "LOGOUT" : "LOGIN"
+                        }
+                    </Link>
+                </div>
+                <div>
+                <div>
+                <div>
+                    {
+                        authState.isSuccess && authState?.user ? 
+                          
+                        <div className="bg-dark text-light rounded-circle p-2 d-flex justify-content-center align-items-center border border-dark fs-3 " style={{width: "30px", height: "30px"}}>
+                            <p className="mb-0">{authState?.user?.firstname?.charAt(0).toUpperCase()}</p>
+                        </div>: <i className="fas fa-user fs-2"></i>
+                    }
+                 </div>
+                
                 </div>
                 
+                </div>
                 </div>
                 
             </header>

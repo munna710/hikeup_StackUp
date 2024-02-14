@@ -419,6 +419,19 @@ const createOrder = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
   })
+  const getMyOrders = asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+
+    try {
+        const orders = await Order.find({ user: _id }).populate("user").populate("orderItems.product").populate("orderItems.color").populate("orderItems.size")
+        res.json({
+            orders
+        })
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
 // const emptyCart = asyncHandler(async (req, res) => {
 //   const { _id } = req.user;
 //   validateMongoDbId(_id);
@@ -585,5 +598,6 @@ module.exports = {createUser,
   // getAllOrders,
   // getOrderByUserId,
   updateProductQuantityFromCart,
-  createOrder
+  createOrder,
+  getMyOrders
 }

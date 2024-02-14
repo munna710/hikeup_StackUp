@@ -16,6 +16,9 @@ import SingleBlog from './pages/Singleblog';
 import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import Checkout from './pages/Checkout';
+import { PrivateRoutes } from './routing/PrivateRoute';
+import { OpenRoutes } from './routing/OpenRoutes';
+import Orders from './pages/Orders';
 
 function App() {
   return (<>
@@ -27,16 +30,16 @@ function App() {
           <Route path ="Contact" element={<Contact />} />
           <Route path ="Login" element={<Login />} />
           <Route path ="Forgotpassword" element={<Forgotpassword />} />
-          <Route path ="Signup" element={<Signup />} />
-          <Route path="Cart" element={<Cart />} />
-          
+          <Route path ="Signup" element={<OpenRoutes><Signup /></OpenRoutes>} />
+          <Route path="Cart" element={<PrivateRoutes><Cart /></PrivateRoutes>} />
+          <Route path="Orders" element={<PrivateRoutes><Orders /></PrivateRoutes>} />
           <Route path='women/*' element={<Women category='women'/>} />
           <Route path='girls/*' element={<Girls category='girls'/>} />
           <Route path ="Blog" element={<Blog />} />
           <Route path=':product/:id' element={<Singlepd />} />
           <Route path='Blog/:id' element={<SingleBlog />} />
-          <Route path='Wishlist' element={<Wishlist />} />
-          <Route path='Checkout' element={<Checkout />} />
+          <Route path='Wishlist' element={<PrivateRoutes><Wishlist /></PrivateRoutes>} />
+          <Route path='Checkout' element={<PrivateRoutes><Checkout /></PrivateRoutes>} />
         </Route>
       </Routes>
     </BrowserRouter>

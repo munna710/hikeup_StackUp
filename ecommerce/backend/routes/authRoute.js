@@ -21,6 +21,7 @@ const {
   createOrder,
   removeProductFromCart,
   updateProductQuantityFromCart,
+  getMyOrders,
 } = require("../controller/userCtrl");
 // const { checkout,paymentVerification } = require("../controller/paymentCtrl");
 const router = express.Router();
@@ -40,7 +41,7 @@ router.delete("/delete-product-cart/:cartItemId", authMiddleware, removeProductF
 router.post("/cart/create-order", authMiddleware, createOrder);
 //  router.post("/order/checkout", authMiddleware, checkout);
 //  router.post("/order/paymentVerification", authMiddleware, paymentVerification);
-// router.get("/get-orders", authMiddleware, getOrders);
+router.get("/getmyorders", authMiddleware, getMyOrders);
 // router.get("/getallorders", authMiddleware, isAdmin, getAllOrders);
 // router.post("/getorderbyuser/:id", authMiddleware, isAdmin, getOrderByUserId);
 router.put("/password", authMiddleware, updatePassword);
