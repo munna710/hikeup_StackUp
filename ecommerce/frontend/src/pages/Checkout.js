@@ -1,12 +1,22 @@
 import { clearAllListeners } from '@reduxjs/toolkit';
 import React,{ useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-
+import { Link, json } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as yup from 'yup'; 
 const Checkout = () => {
     const dispatch = useDispatch()
     const [totalamount, setTotalAmount] = useState(null);
-
+    const [shippingInfo, setShippingInfo] = useState(null)
+    const shippingSchema = yup.object({
+        firstName: yup.string().required("First Name is Required"),
+        lastName: yup.string().required("Last Name is Required"),
+        address: yup.string().required("Address Details are Required"),
+        state: yup.string().required("State is Required"),
+        city: yup.string().required("City is Required"),
+        country: yup.string().required("Country is Required"),
+        pincode: yup.number().required("Pincode is Required"),
+    });
         const userCartState = useSelector(state => state.auth.cartProducts);
         console.log(userCartState);
         useEffect(() => {
@@ -17,6 +27,24 @@ const Checkout = () => {
     
             }
         }, [userCartState]);
+        const formik = useFormik({
+            initialValues: {
+                firstName: "",
+                lastName: "",
+                address: "",
+                state: "",
+                city: "",
+                country: "",
+                pincode: "",
+                other: "",
+            },
+            validationSchema: shippingSchema,
+            onSubmit: (values) => {
+                setShippingInfo(values)
+            }
+            
+        });
+        
         return (
                 <>
                 <div style={{backgroundColor:"#e8e8e8"}} className="checkout-wrapper py-5 home-wrapper-2 ">
@@ -38,21 +66,37 @@ const Checkout = () => {
                                             Munna710 (Munna710@gmail.com)
                                             </p>
                                             <h4>Shipping Address</h4>
-                                    <form action="" className='d-flex gap-15 flex-wrap justify-content-between'>
+                                    <form onSubmit={formik.handleSubmit} action="" className='d-flex gap-15 flex-wrap justify-content-between'>
                                         <div className="w-100">
-                                            <select name="" className="form-control form-select" id="">
+                                            <select name="country" className="form-control form-select" id=""
+                                           value={formik.values.country}
+                                           onChange={formik.handleChange("country")}
+                                            onBlur={formik.handleBlur("country")}
+                                            >
                                                 <option value="" selected disabled>
                                                     Select Country
                                                 </option>
+                                                <option value="India">India</option>
+
                                             </select>
+                                            {formik.touched.country && formik.errors.country ? (
+                                            <div className='error'>{formik.errors.country}</div>
+                                            ) : null}
                                         </div>
 
-                                        <div className="flex-grow-1">
+                                        <div className="flex-grow-1 me-2">
                                             <input
                                                 type="text"
                                                 placeholder="First Name"
                                                 className="form-control"
+                                                name='firstName'
+                                                value={formik.values.firstName}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur('firstName')}
                                             />
+                                            {formik.touched.firstName && formik.errors.firstName ? (
+                                            <div className='error'>{formik.errors.firstName}</div>
+                                            ) : null}
                                         </div>
 
                                         <div className="flex-grow-1">
@@ -60,7 +104,15 @@ const Checkout = () => {
                                                 type="text"
                                                 placeholder="Last Name"
                                                 className="form-control"
+                                                name='lastName'
+                                                value={formik.values.lastName}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur('lastName')}
+
                                             />
+                                            {formik.touched.lastName && formik.errors.lastName ? (
+                                            <div className='error'>{formik.errors.lastName}</div>
+                                            ) : null}
                                         </div>
 
                                         <div className="w-100">
@@ -68,13 +120,21 @@ const Checkout = () => {
                                                 type="text"
                                                 placeholder="Address"
                                                 className="form-control"
+                                                name='address'
+                                                value={formik.values.address}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur('address')}
                                             />
+                                            {formik.touched.address && formik.errors.address ? (
+                                            <div className='error'>{formik.errors.address}</div>
+                                            ) : null}
                                         </div>
                                         <div className="w-100">
                                             <input
                                                 type="text"
                                                 placeholder="Apartment,Suite,etc(optional)"
                                                 className="form-control"
+
                                             />
                                         </div>
                                         <div className="w-100">
@@ -82,14 +142,48 @@ const Checkout = () => {
                                             type="text"
                                             placeholder="City"
                                             className="form-control"
+                                            name='city'
+                                            value={formik.values.city}
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur("city")}
                                         />
+                                        {formik.touched.city && formik.errors.city ? (
+                                        <div className='error'>{formik.errors.city}</div>
+                                        ) : null}
                                         </div>
-                                        <div className="flex-grow-1">
-                                            <select name="" className="form-control form-select" id="">
+                                        <div className="flex-grow-1 me-2">
+                                            <select name="state" className="form-control form-select" id=""
+                                            value={formik.values.state}
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur("state")}
+                                            >
                                                 <option value="" selected disabled>
                                                     Select State
                                                 </option>
+                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="Assam">Assam</option>
+                                                <option value="Bihar">Bihar</option>
+                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gujarat">Gujarat</option>
+                                                <option value="Haryana">Haryana</option>
+                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="Jharkhand">Jharkhand</option>
+                                                <option value="Karnataka">Karnataka</option>
+                                                <option value="Kerala">Kerala</option>
+                                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                <option value="Maharashtra">Maharashtra</option>
+                                                <option value="Manipur">Manipur</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Mizoram">Mizoram</option>
+                                                <option value="Nagaland">Nagaland</option>
+                                                <option value="Odisha">Odisha</option>
+                                                
                                             </select>
+                                            {formik.touched.state && formik.errors.state ? (
+                                            <div className='error'>{formik.errors.state}</div>
+                                            ) : null}
                                         </div>
 
                                         <div className="flex-grow-1">
@@ -97,7 +191,16 @@ const Checkout = () => {
                                                 type="text"
                                                 placeholder="Zipcode"
                                                 className="form-control"
+                                                name='pincode'
+                                                value={formik.values.pincode}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur("pincode")}
                                             />
+                                            {formik.touched.pincode && formik.errors.pincode
+                                            ? (
+                                            <div className='error'>{formik.errors.pincode}</div>
+                                            ) : null}
+
                                         </div>
 
                                         <div className="w-100">
@@ -107,6 +210,7 @@ const Checkout = () => {
                                             <Link to="/cart" className="btn btn-outline-dark me-2 ">
                                                 Continue to Shipping
                                             </Link>
+                                            <button className="btn btn-outline-dark me-2" type="submit">place order</button>
                                         </div>
                                         </div>
                                     </form>
