@@ -1,13 +1,26 @@
-import { clearAllListeners } from '@reduxjs/toolkit';
+
 import React,{ useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, json } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup'; 
+import axios from 'axios';
+import {config} from '../utils/axiosConfig'
+import { createAnOrder } from '../features/user/userSlice';
 const Checkout = () => {
     const dispatch = useDispatch()
     const [totalamount, setTotalAmount] = useState(null);
-    const [shippingInfo, setShippingInfo] = useState(null)
+    const [shippingInfo, setShippingInfo] = useState(null);
+    const [paymentInfo, setPaymentInfo] = useState({razorpayPaymentId:"",razorpayOrderId:""});
+    const [cartProductState,setCartProductState] = useState([])
+    console.log(paymentInfo,shippingInfo);
+    useEffect(() => {
+        console.log("Payment Info:", paymentInfo);
+      }, [paymentInfo]);
+    
+      useEffect(() => {
+        console.log("Shipping Info:", shippingInfo);
+      }, [shippingInfo]);
     const shippingSchema = yup.object({
         firstName: yup.string().required("First Name is Required"),
         lastName: yup.string().required("Last Name is Required"),
@@ -39,12 +52,109 @@ const Checkout = () => {
                 other: "",
             },
             validationSchema: shippingSchema,
-            onSubmit: (values) => {
-                setShippingInfo(values)
-            }
+            onSubmit: async (values) => {
+                setShippingInfo(values);
+                console.log("Shipping Info:", values);
+                setTimeout(async () => {
+                  await checkOutHandler();
+                }, 100);
+              },
             
         });
-        
+        const loadScript = (src) => {
+            return new Promise((resolve) => {
+              const script = document.createElement("script");
+              script.src = src;
+              script.onload = () => resolve(true);
+              script.onerror = () => resolve(false);
+              document.body.appendChild(script);
+            });
+          };
+        useEffect(() => {
+            let items = [];
+            for(let index = 0; index < userCartState?.length; index++){
+                items.push({
+                    productId: userCartState[index]?.productId?._id,
+                    quantity: userCartState[index]?.quantity,
+                    price: userCartState[index]?.price,
+                    color: userCartState[index]?.color?._id,
+                    sizes: userCartState[index]?.sizes?._id,
+                })
+            }
+            setCartProductState(items)
+        }
+        , [])
+       
+        const checkOutHandler = async () => {
+            
+            try {
+                const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+                if (!res) {
+                  alert("Razorpay SDK failed to Load");
+                  return;
+                }
+          
+                const result = await axios.post("http://localhost:4000/api/user/order/checkout", totalamount, config);
+                if (!result) {
+                  alert("Something went wrong");
+                  return;
+                }
+          
+                const { amount, id: order_id, currency } = result.data.order;
+          
+                const options = {
+                  key: "rzp_test_QkFiEyRnOp9iAy",
+                  amount: amount,
+                  currency: currency,
+                  name: "CUT_AND_NEEDLE",
+                  description: "Test Transaction",
+                  order_id: order_id,
+                  handler: async function (response) {
+                    const data = {
+                      orderCreationId: order_id,
+                      razorpayPaymentId: response.razorpay_payment_id,
+                      razorpayOrderId: response.razorpay_order_id,
+                    };
+          
+                    setPaymentInfo({
+                      razorpayPaymentId: response.razorpay_payment_id,
+                      razorpayOrderId: response.razorpay_order_id,
+                    });
+          
+                    console.log("Payment Info Set:", response.razorpay_payment_id, response.razorpay_order_id);
+          
+                    await axios.post("http://localhost:4000/api/user/order/paymentVerification", data, config);
+          
+                    console.log("Payment Info:", paymentInfo);
+                    console.log("Shipping Info:", shippingInfo);
+          
+                    dispatch(createAnOrder({
+                      totalPrice: totalamount,
+                      totalPriceAfterDiscount: totalamount,
+                      orderItems: cartProductState,
+                      paymentInfo,
+                      shippingInfo,
+                    }));
+                },
+                prefill: {
+                    name: "CUT_AND_NEEDLE",
+                    email: "thisismunna710@gmail.com",
+                    contact: "9999999999",
+                },
+                notes: {
+                    address: "CUT_AND_NEEDLE's office",
+                },
+                theme: {
+                    color: "#61dafb",
+                },
+            };
+    
+            const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } catch (error) {
+      console.error("Error in checkOutHandler:", error);
+    }
+        }
         return (
                 <>
                 <div style={{backgroundColor:"#e8e8e8"}} className="checkout-wrapper py-5 home-wrapper-2 ">
@@ -210,7 +320,7 @@ const Checkout = () => {
                                             <Link to="/cart" className="btn btn-outline-dark me-2 ">
                                                 Continue to Shipping
                                             </Link>
-                                            <button className="btn btn-outline-dark me-2" type="submit">place order</button>
+                                            <button className="btn btn-outline-dark me-2" type="submit" >place order</button>
                                         </div>
                                         </div>
                                     </form>
