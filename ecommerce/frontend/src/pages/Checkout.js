@@ -11,8 +11,9 @@ const Checkout = () => {
     const dispatch = useDispatch()
     const [totalamount, setTotalAmount] = useState(null);
     const [shippingInfo, setShippingInfo] = useState(null);
-    const [paymentInfo, setPaymentInfo] = useState({razorpayPaymentId:"",razorpayOrderId:""});
+    const [paymentInfo, setPaymentInfo] = useState({razorpayOrderId:"",razorpayPaymentId:""});
     const [cartProductState,setCartProductState] = useState([])
+    const [isPaymentInfoSet, setIsPaymentInfoSet] = useState(false);
     console.log(paymentInfo,shippingInfo);
     useEffect(() => {
         console.log("Payment Info:", paymentInfo);
@@ -29,9 +30,24 @@ const Checkout = () => {
         city: yup.string().required("City is Required"),
         country: yup.string().required("Country is Required"),
         pincode: yup.number().required("Pincode is Required"),
+        
     });
         const userCartState = useSelector(state => state.auth.cartProducts);
         console.log(userCartState);
+        useEffect(() => {
+            let items = [];
+            for(let index = 0; index < userCartState?.length; index++){
+                items.push({
+                    product: userCartState[index]?.productId?._id,
+                    quantity: userCartState[index]?.quantity,
+                    price: userCartState[index]?.price,
+                    color: userCartState[index]?.color?._id,
+                    size: userCartState[index]?.sizes?._id,
+                })
+            }
+            setCartProductState(items)
+        }
+        , [])
         useEffect(() => {
             let sum = 0;
             for(let index = 0; index < userCartState?.length; index++){
@@ -70,20 +86,7 @@ const Checkout = () => {
               document.body.appendChild(script);
             });
           };
-        useEffect(() => {
-            let items = [];
-            for(let index = 0; index < userCartState?.length; index++){
-                items.push({
-                    productId: userCartState[index]?.productId?._id,
-                    quantity: userCartState[index]?.quantity,
-                    price: userCartState[index]?.price,
-                    color: userCartState[index]?.color?._id,
-                    sizes: userCartState[index]?.sizes?._id,
-                })
-            }
-            setCartProductState(items)
-        }
-        , [])
+        
        
         const checkOutHandler = async () => {
             
@@ -124,17 +127,17 @@ const Checkout = () => {
                     console.log("Payment Info Set:", response.razorpay_payment_id, response.razorpay_order_id);
           
                     await axios.post("http://localhost:4000/api/user/order/paymentVerification", data, config);
+                    setIsPaymentInfoSet(true);
+                    // console.log("Payment Info:", paymentInfo);
+                    // console.log("Shipping Info:", shippingInfo);
           
-                    console.log("Payment Info:", paymentInfo);
-                    console.log("Shipping Info:", shippingInfo);
-          
-                    dispatch(createAnOrder({
-                      totalPrice: totalamount,
-                      totalPriceAfterDiscount: totalamount,
-                      orderItems: cartProductState,
-                      paymentInfo,
-                      shippingInfo,
-                    }));
+                    // dispatch(createAnOrder({
+                    //   totalPrice: totalamount,
+                    //   totalPriceAfterDiscount: totalamount,
+                    //   orderItems: cartProductState,
+                    //   paymentInfo,
+                    //   shippingInfo,
+                    // }));
                 },
                 prefill: {
                     name: "CUT_AND_NEEDLE",
@@ -155,6 +158,24 @@ const Checkout = () => {
       console.error("Error in checkOutHandler:", error);
     }
         }
+        useEffect(() => {
+            if (isPaymentInfoSet) {
+              console.log("Payment Info:", paymentInfo);
+              console.log("Shipping Info:", shippingInfo);
+        
+              dispatch(createAnOrder({
+                totalPrice: totalamount,
+                totalPriceAfterDiscount: totalamount,
+                orderItems: cartProductState,
+                paymentInfo,
+                shippingInfo,
+              }));
+        
+              // Reset the flag
+              setIsPaymentInfoSet(false);
+            }
+          }, [isPaymentInfoSet]);
+
         return (
                 <>
                 <div style={{backgroundColor:"#e8e8e8"}} className="checkout-wrapper py-5 home-wrapper-2 ">

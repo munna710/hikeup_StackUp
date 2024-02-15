@@ -11,20 +11,20 @@ const Orders = () => {
     console.log(orderState)
   return (
     <>
-    <div className="container cart-wrapper home-wrapper-2 py-5">
+    <div className="container cart-wrapper home-wrapper-2 py-5 border">
     <div className="row">
     <div className="col-12">
-        <div className="row">
-            <div className='col-3'>
+        <div className="row ">
+            <div className='col-3 border-end border-dark'>
                 <h5>Order Id</h5>
             </div>
-            <div className='col-3'>
+            <div className='col-3 border-end border-dark'>
                 <h5>Total Amount </h5>
             </div>
-            <div className='col-3'>
+            <div className='col-3 border-end border-dark'>
                 <h5>Total Amount After Discount</h5>
             </div>
-            <div className='col-3'>
+            <div className='col-3 '>
                 <h5>Status</h5>
             </div>
         </div>
@@ -49,7 +49,7 @@ const Orders = () => {
                             <p>{item?.orderStatus}</p>
                         </div>
                         <div className='col-12'>
-                        <div className="row bg-secondary p-3">
+                        <div className="row bg-secondary p-3 border-bottom">
                         <div className='col-3'>
                             <h6>Product Name</h6>
                         </div>
@@ -71,7 +71,7 @@ const Orders = () => {
                             return(
                                 <div key={index} className="row bg-secondary p-3">
                                 <div className='col-3'>
-                                    <p>{i?.product?.title}</p>
+                                <p>{i?.product?.title}</p>
                                 </div>
                                 <div className='col-2'>
                                     <p>{i?.quantity} </p>
@@ -85,12 +85,12 @@ const Orders = () => {
                                                                     display: 'inline-block', 
                                                                     width: '20px', 
                                                                     height: '20px', 
-                                                                    backgroundColor: i?.color, 
+                                                                    backgroundColor: i?.color?.title, 
                                                                     marginLeft: '10px' 
                                                                 }} /></p>
                                 </div>
                                 <div className='col-1'>
-                                    <p>{i?.size} </p>
+                                    <p>{i?.size?.name} </p>
                                 </div>
                             </div> 
                             )})

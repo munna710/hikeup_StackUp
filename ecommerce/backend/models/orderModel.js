@@ -35,15 +35,19 @@ var orderSchema = new mongoose.Schema(
       },
       other: {
         type: String,
+        
+      },
+      country: {
+        type: String,
         required: true,
       },
     },
     paymentInfo: {
-      razorPayOrderId: {
+      razorpayOrderId: {
         type: String,
         required: true,
       },
-      razorPayPaymentId: {
+      razorpayPaymentId: {
         type: String,
         required: true,
       },
