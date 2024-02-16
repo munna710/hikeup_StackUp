@@ -121,8 +121,8 @@ const Signup = () => {
                         <div>
 
                         <div className='d-flex'> 
-                        <button type='submit' className='btn btn-outline-dark me-2 '>CREATE</button> 
-                          <Link to='/Login' className='btn btn-outline-dark me-2 '>CANCEL</Link>
+                        <button type='submit' className='btn btn-outline-dark me-2 mb-3 '>CREATE</button> 
+                          <Link to='/Login' className='btn btn-outline-dark me-2 mb-3 '>CANCEL</Link>
                           </div>
                         </div>
                      </form>

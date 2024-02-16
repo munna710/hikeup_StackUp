@@ -51,10 +51,10 @@ const Navbar = () => {
                 <div>
                     {
                         authState.isSuccess && authState?.user ? 
-                          
+                        <Link to="/my-profile"> 
                         <div className="bg-dark text-light rounded-circle p-2 d-flex justify-content-center align-items-center border border-dark fs-3 " style={{width: "30px", height: "30px"}}>
                             <p className="mb-0">{authState?.user?.firstname?.charAt(0).toUpperCase()}</p>
-                        </div>: <i className="fas fa-user fs-2"></i>
+                        </div></Link>:<i className="fas fa-user fs-2"></i>
                     }
                  </div>
                 

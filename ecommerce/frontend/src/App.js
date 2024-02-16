@@ -19,6 +19,7 @@ import Checkout from './pages/Checkout';
 import { PrivateRoutes } from './routing/PrivateRoute';
 import { OpenRoutes } from './routing/OpenRoutes';
 import Orders from './pages/Orders';
+import Profile from './pages/Profile';
 
 function App() {
   return (<>
@@ -30,7 +31,7 @@ function App() {
           <Route path ="Contact" element={<Contact />} />
           <Route path ="Login" element={<Login />} />
           <Route path ="Forgotpassword" element={<Forgotpassword />} />
-          <Route path ="Signup" element={<OpenRoutes><Signup /></OpenRoutes>} />
+          <Route path ="Signup" element={<Signup />} />
           <Route path="Cart" element={<PrivateRoutes><Cart /></PrivateRoutes>} />
           <Route path="Orders" element={<PrivateRoutes><Orders /></PrivateRoutes>} />
           <Route path='women/*' element={<Women category='women'/>} />
@@ -40,6 +41,7 @@ function App() {
           <Route path='Blog/:id' element={<SingleBlog />} />
           <Route path='Wishlist' element={<PrivateRoutes><Wishlist /></PrivateRoutes>} />
           <Route path='Checkout' element={<PrivateRoutes><Checkout /></PrivateRoutes>} />
+          <Route path="my-profile" element={<PrivateRoutes><Profile/></PrivateRoutes>} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -25,3 +25,6 @@
     height: 500px;
     object-fit: cover;
 }
+.no-underline {
+    text-decoration: none;
+  }

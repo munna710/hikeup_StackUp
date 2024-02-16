@@ -72,9 +72,9 @@ const Login = () => {
                             <div className='forgot-password'>
                             <Link to='/Forgotpassword'>Forgot Password?</Link>
                             <div className='d-flex'> 
-                            <button type='submit' className='btn btn-outline-dark me-2'>LOGIN</button> 
+                            <button type='submit' className='btn btn-outline-dark me-2 mb-3'>LOGIN</button> 
 
-                            <Link to='/Signup' className='btn btn-outline-dark me-2'>SIGNUP</Link>
+                            <Link to='/Signup' className='btn btn-outline-dark me-2 mb-3'>SIGNUP</Link>
                         </div>
                         </div>
                      </form>
