@@ -1,70 +1,125 @@
-import React from "react";
-import logo from '../assets/logo2.png';
+import React, { useEffect, useState } from "react";
+import logo from '../assets/logo70.png';
 import { BsBag } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Navbar.css';
-import { useSelector } from "react-redux";
 
+import { useDispatch, useSelector } from "react-redux";
+import { Typeahead } from 'react-bootstrap-typeahead';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
+import { getAllProducts2 } from '../features/products/productSlice';
 const Navbar = () => {
+    const dispatch = useDispatch();
     const authState = useSelector((state) => state.auth);
+    const [paginate, setPaginate] = useState(true)
+    const productState = useSelector((state) => state.product.products);
+    console.log(productState)
+    useEffect(() => {
+        getProducts();
+    }, []);
+    const getProducts = () => {
+        dispatch(getAllProducts2());
+    };
+    const [productOpt,setProductOpt] = useState([])
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+    useEffect(() => {
+        let data = []
+        for (let index = 0; index < productState?.length; index++) {
+            const element = productState[index];
+            data.push({id:index, prod:element?._id, name:element?.title})
+        }
+        setProductOpt(data)
+    }, [productState])
+    console.log(productOpt)
+    console.log(productState)
     return (
-        <div className="container  ">
-            <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom fixed-top bg-light my-navbar">
-                <a className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" href="#">
-                    <img src={logo} alt="Logo" width="60" height="50" className="bi me-2" />
-                    <span style={{ fontSize: '28px' }}>CUT_AND_NEEDLE</span>
-                </a>
-                <div >
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
-                <li className="nav-item"><a href="/" class="nav-link px-2 link-secondary hover-effect">HOME</a></li>
-                <li className="nav-item"><a href="/women" class="nav-link px-2 link-dark hover-effect">WOMEN</a></li>
-                <li className="nav-item"><a href="/girls" class="nav-link px-2 link-dark hover-effect">GIRLS</a></li>
-                <li className="nav-item dropdown">
-                <a href="#" className="nav-link px-2 link-dark hover-effect dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">ACCESSORIES</a>
-                <ul className="dropdown-menu fade-up" aria-labelledby="navbarDropdownMenuLink">
-                <li><a className="dropdown-item" href="#">SCRUNCHIES</a></li>
-                <li><a className="dropdown-item" href="#">BAG</a></li>
-                </ul>
+        <>
 
-                </li>
-                <li><a href="/Blog" class="nav-link px-2 link-dark hover-effect">BLOG</a></li>
-                {/* <li><a href="#" class="nav-link px-2 link-dark  d-flex align-items-top"><BsBag size={25}/></a></li> */}
-                </ul>
-                </div >
-                <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" className="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
-                </form>
-              
-                <div class="d-flex align-items-center justify-content-end col-md-3">
-                <a href="/Cart" className="link-dark me-3 bag-icon">
-                <BsBag size={32} />
-                </a>
-                <div className="text-end me-2">
-                    <Link to="/login" type="link" className="btn btn-outline-dark me-2">
-                        {
-                            authState.isSuccess?  "LOGOUT" : "LOGIN"
-                        }
-                    </Link>
-                </div>
-                <div>
-                <div>
-                <div>
+<nav className="navbar navbar-expand-lg bg-white sticky-top border-bottom">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#"><img src={logo} alt="Logo" width="300" height="80" className="image-fluid" /></a>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span className=""><i class="fas fa-bars"></i></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarScroll">
+      <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" >
+        <li className="nav-item">
+        <a href="/" className="nav-link link-secondary hover-effect">HOME</a>
+        </li>
+        <li className="nav-item">
+        <a href="/women" className="nav-link link-dark hover-effect">WOMEN</a>
+        </li>
+        <li className="nav-item dropdown">
+        <a href="/girls" className="nav-link link-dark hover-effect">GIRLS</a>
+        </li>
+        <li className="nav-item dropdown">
+                            <a href="#" className="nav-link link-dark hover-effect dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">ACCESSORIES</a>
+                            <ul className="dropdown-menu fade-up" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a className="dropdown-item" href="#">SCRUNCHIES</a></li>
+                                <li><a className="dropdown-item" href="#">BAG</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/Blog" class="nav-link link-dark hover-effect">BLOG</a></li>
+                        </ul>
+                        
+                    
+           
+            <div className="d-flex input-group">
+            <Typeahead
+            className=""
+                id="pagination-example"
+                onPaginate={() => console.log('Results paginated')}
+                onChange={(selected) => {if (selected.length > 0)
                     {
-                        authState.isSuccess && authState?.user ? 
-                        <Link to="/my-profile"> 
-                        <div className="bg-dark text-light rounded-circle p-2 d-flex justify-content-center align-items-center border border-dark fs-3 " style={{width: "30px", height: "30px"}}>
+                    navigate(`/product/${selected[0].prod}`)
+                }}}
+                options={productOpt}
+                paginate={paginate}
+                labelKey="name"
+                placeholder="Search for Products here..."
+                />
+           
+            </div>
+            <div>
+                    <a href="/Cart" className="">
+                <BsBag className="fs-2 link-dark me-2 bag-icon" />
+                </a>
+                    </div>
+     
+    
+      
+      <div>
+                    {
+                        authState?.user ? 
+                        <Link to="/my-profile" className="no-underline"> 
+                        <div className="bg-dark text-light rounded-circle p-2 d-flex justify-content-center align-items-center border border-dark fs-3 me-2" style={{width: "39px", height: "39px"}}>
                             <p className="mb-0">{authState?.user?.firstname?.charAt(0).toUpperCase()}</p>
-                        </div></Link>:<i className="fas fa-user fs-2"></i>
+                        </div></Link>:<i className="fas fa-user fs-2 me-2"></i>
                     }
                  </div>
-                
-                </div>
-                
-                </div>
-                </div>
-                
-            </header>
-        </div>
+                 <div className="">
+                    {
+                        authState?.user ?
+                        <button type="button" className="btn btn-outline-dark me-2" onClick={handleLogout}>
+                            LOGOUT
+                        </button>
+                        :
+                        <Link to="/login" className="btn btn-outline-dark me-2">
+                            LOGIN
+                        </Link>
+                    }
+                    </div>
+      
+      
+    </div>
+  </div>
+</nav>
+       
+        </>
     )
 }
 

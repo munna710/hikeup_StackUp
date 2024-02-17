@@ -94,7 +94,7 @@ const Profile = () => {
             </div>
 
     </div>
-    <div className="row bg-secondary border-top border-light border-5">
+    <div className="row bg-secondary border-top border-light border-5 border-bottom">
         <div className='col-12'>
             <div className='row'>
                 <Link to='/orders' className='no-underline'>
@@ -103,8 +103,8 @@ const Profile = () => {
                 </div>
                 </Link>
                 <Link to="/Wishlist" className='no-underline'>
-                <div className='  my-4 d-flex align-items-center  text-white'>
-                <h3 className='me-2'>My Wishlist</h3>
+                <div className='  my-4 d-flex align-items-center  text-white '>
+                <h3 className='me-2 '>My Wishlist</h3>
                 </div>
                 </Link>
             </div>

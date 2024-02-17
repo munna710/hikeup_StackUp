@@ -32,11 +32,11 @@ const Signup = () => {
   });
   return (
     <>
-    <div className="container bg-dark">
+    <div className="container">
     <div className='login-wrapper py-5 home wrapper -2 d-flex align-items-center justify-content-center'>
         <div className='row'>
             <div className='col-12'>
-                <div className='login-card'>
+                <div className='login-card border border-dark'>
                     <h3 className='text-center'>Create Account</h3>
                      <form onSubmit={formik.handleSubmit} >
                      <div>

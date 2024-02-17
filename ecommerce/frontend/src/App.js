@@ -20,6 +20,8 @@ import { PrivateRoutes } from './routing/PrivateRoute';
 import { OpenRoutes } from './routing/OpenRoutes';
 import Orders from './pages/Orders';
 import Profile from './pages/Profile';
+import Product from './pages/product';
+
 
 function App() {
   return (<>
@@ -30,6 +32,7 @@ function App() {
           <Route path ="About" element={<About />} />
           <Route path ="Contact" element={<Contact />} />
           <Route path ="Login" element={<Login />} />
+          <Route path ="product" element={<Product / >} />
           <Route path ="Forgotpassword" element={<Forgotpassword />} />
           <Route path ="Signup" element={<Signup />} />
           <Route path="Cart" element={<PrivateRoutes><Cart /></PrivateRoutes>} />

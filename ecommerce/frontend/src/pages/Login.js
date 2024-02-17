@@ -34,11 +34,11 @@ const Login = () => {
       }
   }, [authState.isSuccess]);
       return (
-          <div className="container bg-dark">
-            <div className='login-wrapper py-5 home wrapper -2 d-flex align-items-center justify-content-center'>
+          <div className="container border">
+            <div className='login-wrapper py-5 home wrapper -2 d-flex align-items-center justify-content-center '>
               <div className='row'>
                   <div className='col-12'>
-                <div className='login-card'>
+                <div className='login-card border border-dark '>
                     <h3 className='text-center'>LOGIN</h3>
                      <form onSubmit={formik.handleSubmit}>
                         <div>

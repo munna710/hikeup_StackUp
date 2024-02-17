@@ -36,7 +36,7 @@ const Contact = () => {
     <div className=''>
     <div className='container-xxl shadow p-3 mb-5 bg-body rounded'>
     <div className='row'>
-    <div className='col-12 bg-dark d-flex justify-content-center '>
+    <div className=' container-fluid col-12 bg-dark d-flex justify-content-center mb-3'>
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62651.020615123176!2d76.02719185828745!3d11.061943149026414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba64a9be29b058f%3A0x23e371e0d4c30d8e!2sMalappuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1699460265667!5m2!1sen!2sin" 
       width="800" 
       height="450" 
@@ -108,7 +108,7 @@ const Contact = () => {
       </div>
       </div>
       </div>
-      <div className='col-6 bg-dark text-white' > 
+      <div className='col-6' > 
       <h3 className='contact-title mb-4' >Get in touch with us</h3>
       <div className='d-flex justify-content-between'>
         <ul className='ps-3 no-bullets'>
