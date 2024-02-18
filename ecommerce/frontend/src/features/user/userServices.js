@@ -71,6 +71,12 @@ const updateUser = async (data) => {
       return response.data;
   }
 };
+const emptyCart = async () => {
+  const response = await axios.delete(`${base_url}user/empty-cart`, config);
+  if (response.data) {
+      return response.data;
+  }
+}
 
 export const authService = {
   register,
@@ -83,6 +89,7 @@ export const authService = {
   updateProductFromCart,
   getUserOrders,
   createOrder,
-  updateUser
+  updateUser,
+  emptyCart
   
 };

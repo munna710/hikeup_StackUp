@@ -8,11 +8,11 @@ const login = async (user) => {
   }
   return response.data;
 };
-const getOrders = async () => {
-  const response = await axios.get(`${base_url}user/getallorders`, config);
+// const getOrders = async () => {
+//   const response = await axios.get(`${base_url}user/getallorders`, config);
 
-  return response.data;
-};
+//   return response.data;
+// };
 const getOrder = async (id) => {
   const response = await axios.post(
     `${base_url}user/getorderbyuser/${id}`,
@@ -27,12 +27,16 @@ const getUsers = async () => {
 
   return response.data;
 } ;
+const getAllOrders = async () => {
+  const response = await axios.get(`${base_url}user/getallorders`, config);
 
+  return response.data;
+} ;
 const authService = {
   login,
-  getOrders,
   getOrder,
   getUsers,
+  getAllOrders,
 };
 
 export default authService;

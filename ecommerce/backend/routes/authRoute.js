@@ -22,6 +22,8 @@ const {
   removeProductFromCart,
   updateProductQuantityFromCart,
   getMyOrders,
+  emptyCart,
+  getAllOrders,
 } = require("../controller/userCtrl");
 const { checkout,paymentVerification } = require("../controller/paymentCtrl");
 const router = express.Router();
@@ -34,7 +36,7 @@ router.get("/refresh", handleRefreshToken);
 router.post("/register", createUser);
 router.post("/cart", authMiddleware, userCart);
 router.get("/cart", authMiddleware, getUserCart);
-// router.delete("/empty-cart", authMiddleware, emptyCart);
+router.delete("/empty-cart", authMiddleware, emptyCart);
 router.delete("/update-product-cart/:cartItemId/:newQuantity", authMiddleware, updateProductQuantityFromCart);
 router.delete("/delete-product-cart/:cartItemId", authMiddleware, removeProductFromCart);
 // router.post("/cart/applycoupon", authMiddleware, applyCoupon);
@@ -42,7 +44,7 @@ router.post("/cart/create-order", authMiddleware, createOrder);
 router.post("/order/checkout", authMiddleware, checkout);
 router.post("/order/paymentVerification", authMiddleware, paymentVerification);
 router.get("/getmyorders", authMiddleware, getMyOrders);
-// router.get("/getallorders", authMiddleware, isAdmin, getAllOrders);
+router.get("/getallorders", authMiddleware, isAdmin, getAllOrders);
 // router.post("/getorderbyuser/:id", authMiddleware, isAdmin, getOrderByUserId);
 router.put("/password", authMiddleware, updatePassword);
 router.post("/forgot-password-token", forgotPasswordToken);

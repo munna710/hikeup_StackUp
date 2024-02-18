@@ -1,14 +1,18 @@
 
 import React,{ useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup'; 
 import axios from 'axios';
 import {config} from '../utils/axiosConfig'
-import { createAnOrder } from '../features/user/userSlice';
+import { createAnOrder, deleteUserCart, getUserCart } from '../features/user/userSlice';
+
 const Checkout = () => {
     const dispatch = useDispatch()
+    const authState = useSelector((state) => state.auth);
+    const navigate = useNavigate();
+
     const [totalamount, setTotalAmount] = useState(null);
     const [shippingInfo, setShippingInfo] = useState(null);
     const [paymentInfo, setPaymentInfo] = useState({razorpayOrderId:"",razorpayPaymentId:""});
@@ -19,9 +23,19 @@ const Checkout = () => {
         console.log("Payment Info:", paymentInfo);
       }, [paymentInfo]);
     
-      useEffect(() => {
+    useEffect(() => {
         console.log("Shipping Info:", shippingInfo);
       }, [shippingInfo]);
+    useEffect(() => {
+        dispatch(getUserCart())
+    }, [])
+    useEffect(() => {
+        console.log(authState); // Log authState to check if useEffect is running when authState changes
+        if (authState?.orderedProduct !== null && authState?.orderedProduct?.success === true) {
+          console.log(authState.orderedProduct.isSuccess); // Log isSuccess to check its value
+          navigate("/orders"); // Use navigate to navigate
+        }
+      }, [authState]);
     const shippingSchema = yup.object({
         firstName: yup.string().required("First Name is Required"),
         lastName: yup.string().required("Last Name is Required"),
@@ -170,12 +184,13 @@ const Checkout = () => {
                 paymentInfo,
                 shippingInfo,
               }));
-        
+              dispatch(deleteUserCart());
+
               // Reset the flag
               setIsPaymentInfoSet(false);
             }
           }, [isPaymentInfoSet]);
-
+       
         return (
                 <>
                 <div style={{backgroundColor:"#e8e8e8"}} className="checkout-wrapper py-5 home-wrapper-2 ">
