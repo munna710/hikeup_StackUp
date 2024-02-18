@@ -142,7 +142,7 @@ export const authSlice= createSlice({
           state.isError=true;
           state.message=action.error;
           if(state.isError ===true){
-            toast.error(action.error);
+            toast.error(action.payload.response.data.message);
           }
 
         })
@@ -164,7 +164,7 @@ export const authSlice= createSlice({
             state.isError=true;
             state.message=action.error;
             if(state.isError ===true){
-              toast.error(action.error);
+              toast.error(action.payload.response.data.message);
             }
   
           })
@@ -321,10 +321,23 @@ export const authSlice= createSlice({
               state.isError = false;
               state.isSuccess = true;
               state.updatedProfile = action.payload;
+              if (state.isSuccess) {
+                let currentUserData = JSON.parse(localStorage.getItem("customer"));
+                let newUserData = {
+                    id: currentUserData._id,
+                    token: currentUserData.token,
+                    firstname: action.payload.firstname,
+                    lastname: action.payload.lastname,
+                    email: action.payload.email,
+                    mobile: action.payload.mobile,
+                }
+                
+                localStorage.setItem("customer", JSON.stringify(newUserData));
+                state.user = newUserData;
               if(state.isSuccess ===true){
                 toast.info("Profile updated successfully");
               }
-          })
+          }})
           .addCase(updateProfile.rejected, (state, action) => {
               state.isLoading = false;
               state.isError = true;

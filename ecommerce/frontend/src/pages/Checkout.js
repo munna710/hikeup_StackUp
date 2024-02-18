@@ -96,15 +96,15 @@ const Checkout = () => {
                   alert("Razorpay SDK failed to Load");
                   return;
                 }
-          
-                const result = await axios.post("http://localhost:4000/api/user/order/checkout", totalamount, config);
+                console.log(totalamount);
+                const result = await axios.post("http://localhost:4000/api/user/order/checkout", { amount: totalamount }, config);                
                 if (!result) {
                   alert("Something went wrong");
                   return;
                 }
-          
+                console.log(result.data);
                 const { amount, id: order_id, currency } = result.data.order;
-          
+                console.log(amount);
                 const options = {
                   key: "rzp_test_QkFiEyRnOp9iAy",
                   amount: amount,

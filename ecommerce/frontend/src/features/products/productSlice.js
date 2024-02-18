@@ -3,9 +3,9 @@ import { toast } from "react-toastify";
 import { productService } from "./productService";
 
 
-export const getAllProducts = createAsyncThunk("product/get", async (category, thunkAPI) => {
+export const getAllProducts = createAsyncThunk("product/get", async ({ category, sort }, thunkAPI) => {
   try {
-    return await productService.getProducts(category);
+    return await productService.getProducts(category, sort);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }

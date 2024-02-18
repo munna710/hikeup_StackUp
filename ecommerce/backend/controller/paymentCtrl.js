@@ -4,11 +4,15 @@ const instance = new Razorpay({
 })
 
 const checkout = async (req, res) => {
+    const { amount } = req.body; // Get amount from request body
+
     const option = {
-        amount: 50000,
+        amount: amount * 100, // Convert to smallest currency unit
         currency: "INR"
     }
+
     const order = await instance.orders.create(option)
+
     res.json({
         success: true,
         order

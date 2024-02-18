@@ -2,8 +2,8 @@ import axios from "axios";
 import { base_url,config} from "../../utils/axiosConfig";
 
 
-const getProducts = async (category) => {
-  const response = await axios.get(`${base_url}product?category=${category}`);
+const getProducts = async (category, sort) => {
+  const response = await axios.get(`${base_url}product?category=${category}&sort=${sort}`);
   if (response.data) {
     return response.data;
   }

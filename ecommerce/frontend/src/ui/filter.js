@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './filter.css';
-import RangeSlider from 'react-range-slider-input';
 
 export const Filter = () => {
 

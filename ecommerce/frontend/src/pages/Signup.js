@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link , useNavigate} from 'react-router-dom'
 import './login.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../features/user/userSlice';
 
 const signUpSchema = yup.object({
@@ -16,6 +16,9 @@ const signUpSchema = yup.object({
 
 const Signup = () => {
   const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -30,6 +33,10 @@ const Signup = () => {
       resetForm();
     },
   });
+  useEffect(() => {
+          if(authState.createdUser !== null && authState.isSuccess === true){
+          navigate('/login');
+          } },[authState])
   return (
     <>
     <div className="container">

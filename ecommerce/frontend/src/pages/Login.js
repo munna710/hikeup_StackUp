@@ -29,10 +29,10 @@ const Login = () => {
       },
     });
     useEffect(() => {
-      if (authState.isSuccess) {
+      if (authState.user !== null && authState.isSuccess === true) {
           navigate('/');
       }
-  }, [authState.isSuccess]);
+  }, [authState]);
       return (
           <div className="container border">
             <div className='login-wrapper py-5 home wrapper -2 d-flex align-items-center justify-content-center '>
