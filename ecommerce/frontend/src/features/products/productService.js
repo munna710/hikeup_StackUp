@@ -26,12 +26,18 @@ const getSingleProduct = async (id) => {
     return response.data;
   }
 };
-
+const rateProduct = async (data) => {
+  const response = await axios.put(`${base_url}product/rating`, data,config);
+  if (response.data) {
+      return response.data;
+  }
+};
 export const productService = {
 
  getProducts,
  addTowishlist,
  getSingleProduct,
- getProducts2
+ getProducts2,
+ rateProduct
   
 };

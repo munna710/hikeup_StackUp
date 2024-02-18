@@ -10,6 +10,7 @@ export const getAllProducts = createAsyncThunk("product/get", async (category, t
     return thunkAPI.rejectWithValue(error);
   }
 });
+
 export const getAllProducts2 = createAsyncThunk("product/getAll", async (thunkAPI) => {
   try {
     return await productService.getProducts2();
@@ -22,6 +23,16 @@ export const addTowishlist = createAsyncThunk(
   async (prodId, thunkAPI) => {
     try {
       return await productService.addTowishlist(prodId);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const addRating = createAsyncThunk(
+  "product/rating",
+  async (data, thunkAPI) => {
+    try {
+      return await productService.rateProduct(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -114,6 +125,25 @@ export const productSlice= createSlice({
             state.isError = true;
             state.isSuccess = false;
             state.message = action.error;
+        })
+        .addCase(addRating.pending, (state) => {
+          state.isLoading = true;
+      })
+        .addCase(addRating.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isError = false;
+            state.isSuccess = true;
+            state.rating = action.payload;
+            state.message = "rating added Successfully !";
+           if (state.isSuccess) {
+            toast.success("Rating Added Successfully")
+        }
+        })
+        .addCase(addRating.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.isSuccess = false;
+            state.message = action.error;
         });
       
         
@@ -122,3 +152,4 @@ export const productSlice= createSlice({
  })
 
 export default productSlice.reducer;
+//addRating

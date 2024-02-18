@@ -3,6 +3,8 @@ import logo from '../assets/logo70.png';
 import { BsBag } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import './Navbar.css';
+import { getAProduct } from '../features/products/productSlice';
+
 
 import { useDispatch, useSelector } from "react-redux";
 import { Typeahead } from 'react-bootstrap-typeahead';
@@ -76,6 +78,7 @@ const Navbar = () => {
                 onChange={(selected) => {if (selected.length > 0)
                     {
                     navigate(`/product/${selected[0].prod}`)
+                    dispatch(getAProduct(selected[0]?.prod))
                 }}}
                 options={productOpt}
                 paginate={paginate}
