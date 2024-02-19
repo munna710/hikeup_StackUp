@@ -24,6 +24,9 @@ const {
   getMyOrders,
   emptyCart,
   getAllOrders,
+  getMonthwiseOrderIncome,
+  getMonthwiseOrderCount,
+  getYearlyTotalOrders,
 } = require("../controller/userCtrl");
 const { checkout,paymentVerification } = require("../controller/paymentCtrl");
 const router = express.Router();
@@ -45,6 +48,9 @@ router.post("/order/checkout", authMiddleware, checkout);
 router.post("/order/paymentVerification", authMiddleware, paymentVerification);
 router.get("/getmyorders", authMiddleware, getMyOrders);
 router.get("/getallorders", authMiddleware, isAdmin, getAllOrders);
+router.get("/getMonthwiseOrderIncome", authMiddleware, getMonthwiseOrderIncome);
+router.get("/getMonthwiseOrderCount", authMiddleware, getMonthwiseOrderCount);
+router.get("/getYearlyTotalOrders", authMiddleware, getYearlyTotalOrders);
 // router.post("/getorderbyuser/:id", authMiddleware, isAdmin, getOrderByUserId);
 router.put("/password", authMiddleware, updatePassword);
 router.post("/forgot-password-token", forgotPasswordToken);

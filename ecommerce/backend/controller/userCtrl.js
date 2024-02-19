@@ -444,11 +444,7 @@ const emptyCart = asyncHandler(async (req, res) => {
 });
 const getAllOrders = asyncHandler(async (req, res) => {
   try {
-    const orders = await Order.find({})
-      .populate('user') 
-      .populate("orderItems.product")
-      .populate("orderItems.color")
-      .populate("orderItems.size");
+    const orders = await Order.find({}).populate('user')
     res.json({
       orders
     });
@@ -456,6 +452,100 @@ const getAllOrders = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+const getMonthwiseOrderIncome = asyncHandler(async (req, res) => {
+  let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let d = new Date();
+  let endDates = [];
+
+  d.setDate(1);
+  for (let index = 0; index < 11; index++) {
+    d.setMonth(d.getMonth() - 1);
+    endDates.push(new Date(d)); // Store the end date for each month
+  }
+
+  const data = await Order.aggregate([
+    {
+      $match: {
+        createdAt: {
+          $lte: new Date(),
+          $gte: endDates[0], // Use the first end date for the range
+        },
+      },
+    },
+    {
+      $group: {
+        _id: {
+          month: { $month: "$createdAt" }, // Group by the month of createdAt
+        },
+        amount: { $sum: "$totalPriceAfterDiscount" }, count: { $sum: 1 },
+      },
+    },
+  ]);
+  res.json(data);
+});
+const getMonthwiseOrderCount = asyncHandler(async (req, res) => {
+  let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let d = new Date();
+  let endDates = [];
+
+  d.setDate(1);
+  for (let index = 0; index < 11; index++) {
+    d.setMonth(d.getMonth() - 1);
+    endDates.push(new Date(d)); // Store the end date for each month
+  }
+
+  const data = await Order.aggregate([
+    {
+      $match: {
+        createdAt: {
+          $lte: new Date(),
+          $gte: endDates[0], // Use the first end date for the range
+        },
+      },
+    },
+    {
+      $group: {
+        _id: {
+          month: { $month: "$createdAt" }, // Group by the month of createdAt
+        },
+        count: { $sum: 1 },
+      },
+    },
+  ]);
+  res.json(data);
+});
+const getYearlyTotalOrders = asyncHandler(async (req, res) => {
+  let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let d = new Date();
+  let endDates = [];
+
+  d.setDate(1);
+  for (let index = 0; index < 11; index++) {
+    d.setMonth(d.getMonth() - 1);
+    endDates.push(new Date(d)); // Store the end date for each month
+  }
+
+  const data = await Order.aggregate([
+    {
+      $match: {
+        createdAt: {
+          $lte: new Date(),
+          $gte: endDates[0], // Use the first end date for the range
+        },
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        count: { $sum: 1 },
+        amount: { $sum: "$totalPriceAfterDiscount" },
+      },
+    },
+  ]);
+  res.json(data);
+});
+
+
 // const emptyCart = asyncHandler(async (req, res) => {
 //   const { _id } = req.user;
 //   validateMongoDbId(_id);
@@ -625,5 +715,8 @@ module.exports = {createUser,
   createOrder,
   getMyOrders,
   emptyCart,
-  getAllOrders
+  getAllOrders,
+  getMonthwiseOrderIncome,
+  getMonthwiseOrderCount,
+  getYearlyTotalOrders
 }
