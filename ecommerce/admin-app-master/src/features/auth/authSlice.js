@@ -9,6 +9,9 @@ const initialState = {
   customers: [],
   orders: [],
   orderbyuser: [],
+  monthlyData: [],
+  yearlyData: [],
+  updatedOrder: [],
   isError: false,
   isLoading: false,
   isSuccess: false,
@@ -44,16 +47,17 @@ export const getYearlyData = createAsyncThunk(
     }
   }
 );
-// export const getOrders = createAsyncThunk(
+// export const getOrdersByUser = createAsyncThunk(
 //   "order/get-orders",
 //   async (thunkAPI) => {
 //     try {
-//       return await authService.getOrders();
+//       return await authService.getOrder();
 //     } catch (error) {
 //       return thunkAPI.rejectWithValue(error);
 //     }
 //   }
 // );
+
 export const getOrders = createAsyncThunk(
   "order/get-orders",
   async (thunkAPI) => {
@@ -79,6 +83,16 @@ export const getOrderByUser = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       return await authService.getOrder(id);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const updateAOrder = createAsyncThunk(
+  "order/update-order",
+  async (data, thunkAPI) => {
+    try {
+      return await authService.updateOrder(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -182,6 +196,22 @@ export const authSlice = createSlice({
         state.message = "success";
       })
       .addCase(getYearlyData.rejected, (state, action) => {
+        state.isError = true;
+        state.isSuccess = false;
+        state.message = action.error;
+        state.isLoading = false;
+      })
+      .addCase(updateAOrder.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateAOrder.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.updatedOrder = action.payload;
+        state.message = "success";
+      })
+      .addCase(updateAOrder.rejected, (state, action) => {
         state.isError = true;
         state.isSuccess = false;
         state.message = action.error;

@@ -19,6 +19,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
   AiOutlineBgColors,
+  AiOutlineLogout
 } from "react-icons/ai";
 import { Layout, Menu, theme } from 'antd';
 const { Header, Sider, Content } = Layout;
@@ -42,9 +43,15 @@ const MainLayout = () => {
         mode="inline"
         defaultSelectedKeys={['']}
         onClick={({ key }) => {
-          if (key === "signout") {
-          } else {
-            navigate(key);
+          try {
+            if (key === "signout") {
+              localStorage.clear();
+              window.location.reload();
+            } else {
+              navigate(key);
+            }
+          } catch (error) {
+            console.error(error);
           }
         }}
         items={[
@@ -159,6 +166,11 @@ const MainLayout = () => {
             key: "enquiries",
             icon: <FaClipboardList className="fs-4" />,
             label: "Enquiries",
+          },
+          {
+            key: "signout",
+            icon: <AiOutlineLogout className="fs-4" />,
+            label: "Sign out",
           },
         ]}
       />

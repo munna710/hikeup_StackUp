@@ -47,7 +47,7 @@ const Dashboard = () => {
     dispatch(getYearlyData());
     dispatch(getOrders())
   }, []);
-  console.log(orderState)
+  
   useEffect(() => {
     let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
       "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
@@ -70,7 +70,7 @@ const Dashboard = () => {
       data1.push({
         key: i,
         name: orderState[i]?.user?.firstname + " "+ orderState[i]?.user?.lastname,
-        product:  orderState[i]?.orderItems?.length,
+        product: orderState[i]?.orderItems?.length,
         price:orderState[i]?.totalPrice,
         dprice:orderState[i]?.totalPriceAfterDiscount,
         status: orderState[i]?.orderStatus,
@@ -82,7 +82,7 @@ const Dashboard = () => {
 
   console.log(monthlyDataState);
   console.log(monthlyData);
-
+  console.log(orderState)
   // Rest of your component JSX
 
   // const data = [

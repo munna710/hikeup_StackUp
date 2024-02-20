@@ -27,6 +27,8 @@ const {
   getMonthwiseOrderIncome,
   getMonthwiseOrderCount,
   getYearlyTotalOrders,
+  getSingleOrder,
+  updateOrder,
 } = require("../controller/userCtrl");
 const { checkout,paymentVerification } = require("../controller/paymentCtrl");
 const router = express.Router();
@@ -51,7 +53,9 @@ router.get("/getallorders", authMiddleware, isAdmin, getAllOrders);
 router.get("/getMonthwiseOrderIncome", authMiddleware, getMonthwiseOrderIncome);
 router.get("/getMonthwiseOrderCount", authMiddleware, getMonthwiseOrderCount);
 router.get("/getYearlyTotalOrders", authMiddleware, getYearlyTotalOrders);
-// router.post("/getorderbyuser/:id", authMiddleware, isAdmin, getOrderByUserId);
+router.get("/getorderbyuser/:id", authMiddleware, isAdmin, getSingleOrder);
+
+router.put("/update-order/:id", authMiddleware, isAdmin, updateOrder);
 router.put("/password", authMiddleware, updatePassword);
 router.post("/forgot-password-token", forgotPasswordToken);
 router.put("/reset-password/:token", resetPassword);
@@ -63,6 +67,7 @@ router.get("/all-users", authMiddleware, isAdmin, getallUser);
 router.get("/:id", authMiddleware, isAdmin, getaUser);
 router.delete("/:id", authMiddleware, isAdmin, deleteaUser);
 router.put("/edit-user", authMiddleware, updatedUser);
+
 // router.put(
 //   "/order/update-order/:id",
 //   authMiddleware,

@@ -544,6 +544,32 @@ const getYearlyTotalOrders = asyncHandler(async (req, res) => {
   ]);
   res.json(data);
 });
+const getSingleOrder = asyncHandler(async (req, res) => {
+  const {id } = req.params;
+  try {
+    const orders = await Order.findOne({ _id:id }).populate("orderItems.product").populate("user").populate("orderItems.color").populate("orderItems.size");
+    res.json({
+      orders
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+const updateOrder = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  try {
+      const orders = await Order.findById(id);
+      orders.orderStatus = req.body.status;
+      await orders.save();
+
+      res.json({
+          orders
+      });
+  } catch (error) {
+      console.log(error);
+  }
+});
 
 
 // const emptyCart = asyncHandler(async (req, res) => {
@@ -718,5 +744,7 @@ module.exports = {createUser,
   getAllOrders,
   getMonthwiseOrderIncome,
   getMonthwiseOrderCount,
-  getYearlyTotalOrders
+  getYearlyTotalOrders,
+  getSingleOrder,
+  updateOrder,
 }
