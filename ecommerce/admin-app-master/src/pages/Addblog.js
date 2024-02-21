@@ -90,7 +90,7 @@ if (blogState) {
       title: blogName || "",
       description: blogDesc || "",
       category: blogCategory || "",
-      images: "",
+      images: img,
     },
     validationSchema: schema,
     onSubmit: (values) => {
